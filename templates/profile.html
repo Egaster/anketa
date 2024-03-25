@@ -1,25 +1,37 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
   <head>
+    <!--Заголовок страницы в браузере-->
+    <title>Банкрот-эксперт</title>
+    <!--Кодировка страницы-->
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Название сервиса</title>
-    <link rel="stylesheet" href="./static/css/index_style.css">
-    <link rel="icon" href="./favicon.ico" type="image/x-icon">
-  </head>
-  <body>
-    <header>
-        <h1>Название сервиса</h1>
-        <nav>
-            <ul>
-              <li><a href="/info">Внесудебное банкротство</a></li>
-              <li><a href="/info">Судебное банкротство</a></li>
-                <li style="float: right; font-size: small;"><a href="#">Авторизация/Регистрация</a></li>
-            </ul>
-        </nav>
-        <hr> 
-    </header>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no, target-densityDpi=device-dpi" />
+    <!--Привязка css-->
+    <link rel="stylesheet" href="../static/css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/c3770d0828.js" crossorigin="anonymous"></script>
+</head>
+<body>
+
+  <header class="header">
+      <div class="container">
+          <div class="header__inner">
+              <div class="logo">
+              <a class="logo_link" href="../" data-scroll="#main">Банкрот-эксперт</a>
+              </div>
+
+              <nav class="nav">
+                  <a class="link" href="/judicial_bankruptcy">Суденое банкротство</a>
+                  <a class="link" href="/out-of-court_bankruptcy">Внесудебное банкротство</a>
+                  <a class="link" href="/settings">Настройки</a>
+                  <a class="link" href="#" data-scroll="#contacts">Контакты</a>
+                  <li style="float: right; font-size: small;"><a href="/sign-in">Авторизация/Выход</a></li>
+                  <!-- <a class="link" href="#"><i class="fa-solid fa-magnifying-glass"></i></a>
+                  <a class="link" href="#"><i class="fa-solid fa-cart-shopping"></i></a> -->
+              </nav>
+          </div>
+      </div>
+  </header>
     <main>
         
     </main>
