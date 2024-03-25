@@ -1,43 +1,138 @@
+<!--Сообщаем браузеру как стоит обрабатывать эту страницу-->
 <!DOCTYPE html>
+<!--Оболочка документа с тэгом html, где указываем язык содержимого-->
 <html lang="ru">
-  <head>
-    <!--Заголовок страницы в браузере-->
-    <title>Банкрот-эксперт</title>
-    <!--Кодировка страницы-->
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no, target-densityDpi=device-dpi" />
-    <!--Привязка css-->
-    <link rel="stylesheet" href="../static/css/style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap" rel="stylesheet">
-    <script src="https://kit.fontawesome.com/c3770d0828.js" crossorigin="anonymous"></script>
-</head>
-<body>
+    <!--Заголовок страницы, контейнер для других важных данных(не отображается)-->
+    <head>
+        <!--Заголовок страницы в браузере-->
+        <title>Банкрот-эксперт</title>
+        <!--Кодировка страницы-->
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no, target-densityDpi=device-dpi" />
+        <!--Привязка css-->
+        <link rel="stylesheet" href="../static/css/style.css">
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap" rel="stylesheet">
+        <script src="https://kit.fontawesome.com/c3770d0828.js" crossorigin="anonymous"></script>
+    </head>
+    <body>
 
-  <header class="header">
-      <div class="container">
-          <div class="header__inner">
-              <div class="logo">
-              <a class="logo_link" href="#" data-scroll="#main">Банкрот-эксперт</a>
+      <header class="header">
+          <div class="container">
+              <div class="header__inner">
+                  <div class="logo">
+                  <a class="logo_link" href="#" data-scroll="#main">Банкрот-эксперт</a>
+                  </div>
+
+                  <nav class="nav">
+                      <a class="link" href="/judicial_bankruptcy">Суденое банкротство</a>
+                      <a class="link" href="/out-of-court_bankruptcy">Внесудебное банкротство</a>
+                      <a class="link" href="/settings">Настройки</a>
+                      <a class="link" href="#" data-scroll="#contacts">Контакты</a>
+                      <li style="float: right; font-size: small;"><a href="/sign-in">Авторизация/Выход</a></li>
+                      <!-- <a class="link" href="#"><i class="fa-solid fa-magnifying-glass"></i></a>
+                      <a class="link" href="#"><i class="fa-solid fa-cart-shopping"></i></a> -->
+                  </nav>
               </div>
+          </div>
+      </header>
 
-              <nav class="nav">
-                  <a class="link" href="/judicial_bankruptcy">Суденое банкротство</a>
-                  <a class="link" href="/out-of-court_bankruptcy">Внесудебное банкротство</a>
-                  <a class="link" href="/settings">Настройки</a>
-                  <a class="link" href="#" data-scroll="#contacts">Контакты</a>
-                  <li style="float: right; font-size: small;"><a href="/sign-in">Авторизация/Выход</a></li>
-                  <!-- <a class="link" href="#"><i class="fa-solid fa-magnifying-glass"></i></a>
-                  <a class="link" href="#"><i class="fa-solid fa-cart-shopping"></i></a> -->
-              </nav>
+      <div class="intro" id="main">
+          <div class="container">
+              <div class="intro__inner">
+                  <br>
+                  <h1 class="intro__title">Узнай, какое банкротство подходит именно тебе</h1>
+                  <a class="btn" href="#">Заполни анкету</a>
+              </div>
+          </div>
+          <div class="slider">
+              <div class="container">
+                  <div class="slider__inner">
+                      <div class="slider__item active">
+                      <a class="btn2" href="#" data-scroll="#main"> <span class="slider__num">01 Анкета</span> </a>
+                          
+                      </div>
+                      <div class="slider__item active">
+                          <a class="btn2" href="judicial_bankruptcy.html"> <span class="slider__num">02 Суденое банкротство</span> </a>
+                          
+                      </div>
+                      <div class="slider__item active">
+                          <a class="btn2" href="out-of-court_bankruptcy.html"> <span class="slider__num">03 Внесудебное банкротство</span> </a>
+                          
+                      </div>
+                      <div class="slider__item active">
+                          <a class="btn2" href="#" data-scroll="#contacts"> <span class="slider__num">04 Контакты</span> </a>
+                          
+                      </div>
+                  </div>
+              </div>
           </div>
       </div>
-  </header>
-    <main>
-        
-    </main>
-  </body>
-</html>
 
+      
+       <!--MAKED-->
+
+
+      <footer class="small__section" id="contacts">
+          <div class="container">
+              <div class="small__inner">
+                  <div class="small__text">
+                      <a class="logo_link" href="#" data-scroll="#main"><h2>Банкрот-эксперт</h2></a>
+                      <p>Контакты: +7(999)-999-99-99</p>
+                  </div>
+                  <div class="small__text">
+                      <p><h3>Категории</h3></p>
+                      <br>
+                      <p><a href="judicial_bankruptcy.html">Судебное банкротство</a></p>
+                      <p><a href="out-of-court_bankruptcy.html">Внесудебное банкротство</a></p>
+                      <p><a href="settings.html">Настройки</a></p>
+                  </div>
+                  <div class="small__text">
+                      <p><h3>Навигация</h3></p>
+                      <br>
+                      <p><a href="#">Главная</a></p>
+                  </div>
+              </div>
+              <div class="small__text">© 2024 Банкрот-эксперт</div>
+          </div>
+      </footer> <!--MAKED-->
+
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js">
+      </script>
+      <script src="../assets/js/app.js"></script>
+
+      <!--Корзина-->
+      <link rel="stylesheet" href="smartbasket/css/smartbasket.min.css">
+
+      <div class="smart-basket__wrapper"></div>
+
+      <script src="./smartbasket/js/smartbasket.min.js"></script>
+
+          <script>
+              $(function () {
+                  $('.smart-basket__wrapper').smbasket({
+                      productElement: 'клас обвертки карточки товара',
+                      buttonAddToBasket: 'клас кнопки купить',
+                      productPrice: 'product__price-number',
+                      productSize: 'product__size-element',
+                      
+                      productQuantityWrapper: 'product__quantity',
+                      smartBasketMinArea: 'класс корзины',
+                      countryCode: '+7',
+                      smartBasketCurrency: '₽',
+                      smartBasketMinIconPath: './smartbasket/img/shopping-basket-wight.svg',
+
+                      agreement: {
+                          isRequired: true,
+                          isChecked: true,
+                          isLink: 'https://artstranger.ru/privacy.html',
+                      },
+                      nameIsRequired: false,
+                  });
+              });
+          </script>
+      
+    </body>
+</html>
 
 
 
