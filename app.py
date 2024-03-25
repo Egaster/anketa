@@ -5,10 +5,13 @@ app = Flask(__name__)
 def home():
     return render_template('home.html')  # Главная
 
-@app.route('/info')
-def info():
-    return render_template('info.html') # Общая информация про судебное или внесудебное
+@app.route('/judicial_bankruptcy')
+def judicial_bankruptcy_info():
+    return render_template('judicial_bankruptcy.html') # Общая информация про судебное или внесудебное
                                         
+@app.route('/out-of-court_bankruptcy')
+def out_of_court_bankruptcy_info():
+    return render_template('out-of-court_bankruptcy.html') # Общая информация про судебное или внесудебное
 
 @app.route('/full_info')
 def full_info():
