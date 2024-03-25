@@ -1,0 +1,55 @@
+!DOCTYPE html>
+<html>
+<html lang="ru">
+        <head>
+          <!--Заголовок страницы в браузере-->
+          <title>Банкрот-эксперт</title>
+          <!--Кодировка страницы-->
+          <meta charset="UTF-8">
+          <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no, target-densityDpi=device-dpi" />
+          <!--Привязка css-->
+          <link rel="stylesheet" href="../static/css/style.css">
+          <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap" rel="stylesheet">
+          <script src="https://kit.fontawesome.com/c3770d0828.js" crossorigin="anonymous"></script>
+      </head>
+<body>
+    <header class="header__group">
+        <div class="container">
+            <div class="header__inner">
+                <div class="logo">
+                <a class="logo_link" href="../" data-scroll="#main">Банкрот-эксперт</a>
+                </div>
+
+                <nav class="nav">
+                    <a class="link" href="/judicial_bankruptcy">Суденое банкротство</a>
+                    <a class="link" href="/out-of-court_bankruptcy">Внесудебное банкротство</a>
+                    <a class="link" href="/settings">Настройки</a>
+                    <a class="link" href="#" data-scroll="#contacts">Контакты</a>
+                    <li style="float: right; font-size: small;"><a href="/sign-in">Авторизация/Регистрация</a></li>
+                    <!-- <a class="link" href="#"><i class="fa-solid fa-magnifying-glass"></i></a>
+                    <a class="link" href="#"><i class="fa-solid fa-cart-shopping"></i></a> -->
+                </nav>
+            </div>
+        </div>
+    </header>
+    <div class="login">
+        <h1>LOGIN</h1>
+        <div class="links">
+            <a href="{{ url_for('home') }}" class="active">LOGIN</a>
+            <a href="{{ url_for('sign_up') }}">REGISTER</a>
+        </div>
+        <form action="" method="post">
+            <label for="username">
+                <i class="fa fa-user"></i>
+            </label>
+            <input type="text" name="username" placeholder="Username" id="username" required>
+            <label for="password">
+                <i class="fa fa-lock"></i>
+            </label>
+            <input type="password" name="password" placeholder="Password" id="password" required>
+            <div class="msg">{{ msg }}</div>
+            <input type="submit" value="Login">
+        </form>
+    </div>
+</body>
+</html>
