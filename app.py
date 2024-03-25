@@ -54,39 +54,39 @@ def sign_in():
             session['loggedin'] = True
             session['id'] = account['id']
             session['username'] = account['username']
-            msg = 'Logged in successfully!'
+            # msg = 'Logged in successfully!'
             return render_template('home.html', msg=msg)
         else:
-            msg = 'Incorrect username/password!'
+            msg = 'Неверный логин/пароль!'
     return render_template('sign_in.html', msg=msg)
 
 
 @app.route('/sign-up', methods=['GET', 'POST'])
 def sign_up():
     msg = ''
-    if request.method == 'POST' and 'username' in request.form and 'password' in request.form and 'email' in request.form:
+    if request.method == 'POST' and 'username' in request.form and 'password' in request.form and 'phone' in request.form:
         username = request.form['username']
         password = request.form['password']
-        email = request.form['email']
+        phone = request.form['phone']
 
         cursor = mysql.connection.cursor(MySQLdb.cursors.DictCursor)
         cursor.execute('SELECT * FROM form WHERE username = %s', (username,))
         account = cursor.fetchone()
         if account:
-            msg = 'Account already exists!'
-        elif not re.match(r'[^@]+@[^@]+\.[^@]+', email):
-            msg = 'Invalid email address!'
+            msg = 'Такой аккаунт уже существует'
+        elif not re.match(r'(\+7|8)\d{10}', phone):
+            msg = ''
         elif not re.match(r'[A-Za-z0-9]+', username):
-            msg = 'Username must contain only characters and numbers!'
-        elif not username or not password or not email:
-            msg = 'Please fill out the form!'
+            msg = 'Логин может содержать только буквы и цифры!'
+        elif not username or not password or not phone:
+            msg = 'Поля должны быть заполнены!'
         else:
-            cursor.execute('INSERT INTO form VALUES (NULL, %s, %s, %s)', (username, password, email,))
+            cursor.execute('INSERT INTO form VALUES (NULL, %s, %s, %s)', (username, password, phone,))
             mysql.connection.commit()
-            msg = 'You have successfully registered!'
+            msg = 'Регистрация прошла успешно!'
             return render_template('home.html', msg=msg)
     elif request.method == 'POST':
-        msg = 'Please fill out the form!'
+        msg = 'Поля должны быть заполнены!'
     return render_template('sign_up.html', msg=msg)
 
 
