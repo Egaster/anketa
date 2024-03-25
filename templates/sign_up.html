@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-<html>
 <html lang="ru">
   <head>
     <!--Заголовок страницы в браузере-->
@@ -21,7 +20,7 @@
                 </div>
 
                 <nav class="nav">
-                    <a class="link" href="/judicial_bankruptcy">Суденое банкротство</a>
+                    <a class="link" href="/judicial_bankruptcy">Судебное банкротство</a>
                     <a class="link" href="/out-of-court_bankruptcy">Внесудебное банкротство</a>
                     <a class="link" href="/settings">Настройки</a>
                     <a class="link" href="#" data-scroll="#contacts">Контакты</a>
@@ -33,22 +32,35 @@
         </div>
     </header>
     <div class="register">
-        <h1>Register</h1>
+        <h1>Регистрация</h1>
         <form action="{{ url_for('sign_up') }}" method="post" autocomplete="off">
-            <label for="username">
-                <i class="fa fa-user"></i>
-            </label>
-            <input type="text" name="username" placeholder="Username" id="username" required>
-            <label for="password">
-                <i class="fa fa-lock"></i>
-            </label>
-            <input type="password" name="password" placeholder="Password" id="password" required>
-            <label for="email">
-                <i class="fa fa-envelope-open"></i>
-            </label>
-            <input type="email" name="email" placeholder="Email" id="email" required>
+            <div className="username">
+                <label for="username">
+                    <i>Логин</i>
+                </label>
+                <input type="text" name="username" placeholder="ivan" id="username" required>
+            </div>
+            <div className="password">
+                <label for="password">
+                    <i>Пароль</i>
+                </label>
+                <input type="password" name="password" placeholder="" id="password" required>
+            </div>
+            <div className="name">
+                <label for="name">
+                    <i>Имя</i>
+                </label>
+                <input type="name" name="name" placeholder="Иван" id="name" required>
+            </div>
+            <div className="phone">
+                <label for="text">
+                    <i>Телефон</i>
+                </label>
+                <input type="phone" name="phone" placeholder="+71234567890" id="phone" required>
+            </div>
+            
             <div class="msg">{{ msg }}</div>
-            <input type="submit" value="Register">
+            <input type="submit" value="Зарегистрироваться">
         </form>
     </div>
 </body>

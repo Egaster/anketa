@@ -1,5 +1,4 @@
-!DOCTYPE html>
-<html>
+<!DOCTYPE html>
 <html lang="ru">
         <head>
           <!--Заголовок страницы в браузере-->
@@ -21,7 +20,7 @@
                 </div>
 
                 <nav class="nav">
-                    <a class="link" href="/judicial_bankruptcy">Суденое банкротство</a>
+                    <a class="link" href="/judicial_bankruptcy">Судебное банкротство</a>
                     <a class="link" href="/out-of-court_bankruptcy">Внесудебное банкротство</a>
                     <a class="link" href="/settings">Настройки</a>
                     <a class="link" href="#" data-scroll="#contacts">Контакты</a>
@@ -33,23 +32,26 @@
         </div>
     </header>
     <div class="login">
-        <h1>LOGIN</h1>
-        <div class="links">
-            <a href="{{ url_for('home') }}" class="active">LOGIN</a>
-            <a href="{{ url_for('sign_up') }}">REGISTER</a>
-        </div>
+        <h1>Авторизация</h1>
         <form action="" method="post">
-            <label for="username">
-                <i class="fa fa-user"></i>
-            </label>
-            <input type="text" name="username" placeholder="Username" id="username" required>
-            <label for="password">
-                <i class="fa fa-lock"></i>
-            </label>
-            <input type="password" name="password" placeholder="Password" id="password" required>
+            <div className="username">
+                <label for="username">
+                    <i>Логин</i>
+                </label>
+                <input type="text" name="username" placeholder="" id="username" required>
+            </div>
+            <div className="password">
+                <label for="password">
+                    <i>Пароль</i>
+                </label>
+                <input type="password" name="password" placeholder="" id="password" required>
+            </div>
             <div class="msg">{{ msg }}</div>
-            <input type="submit" value="Login">
+            <input type="submit" value="Войти">
         </form>
+        <div class="links">
+            <a href="{{ url_for('sign_up') }}">Зарегистироваться</a>
+        </div>
     </div>
 </body>
 </html>
