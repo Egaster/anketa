@@ -156,6 +156,7 @@ align-items: center;
     transition: color .3s linear;
 }
 
+
 .link:after{
     content: "";
     display: block;
@@ -178,6 +179,21 @@ align-items: center;
 .link:hover:after{
     display: block;
 
+}
+
+
+.link_auto{
+    text-decoration: wavy;
+    /* display: inline-block; */
+    vertical-align: top;
+    margin: 0 13px;
+    position: relative;
+    float: right; 
+    font-size: small;
+    color: rgb(124, 108, 108);
+    text-transform: none;
+
+    transition: color .3s linear;
 }
 
 /* Button 1 */

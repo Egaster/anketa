@@ -1,51 +1,21 @@
 <!DOCTYPE html>
 <html lang="ru">
-        <head>
-          <!--Заголовок страницы в браузере-->
-          <title>Банкрот-эксперт</title>
-          <!--Кодировка страницы-->
-          <meta charset="UTF-8">
-          <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no, target-densityDpi=device-dpi" />
-          <!--Привязка css-->
-          <link rel="stylesheet" href="../static/css/style.css">
-          <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap" rel="stylesheet">
-          <script src="https://kit.fontawesome.com/c3770d0828.js" crossorigin="anonymous"></script>
-      </head>
+<head>
+    <title>Банкрот-эксперт</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../static/css/style.css">
+    <link rel="stylesheet" type="text/css" href="../static/css/sign_in_up.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap" rel="stylesheet">
+</head>
 <body>
-    <header class="header__group">
-        <div class="container">
-            <div class="header__inner">
-                <div class="logo">
-                <a class="logo_link" href="../" data-scroll="#main">Банкрот-эксперт</a>
-                </div>
-
-                <nav class="nav">
-                    <a class="link" href="/judicial_bankruptcy">Судебное банкротство</a>
-                    <a class="link" href="/out-of-court_bankruptcy">Внесудебное банкротство</a>
-                    <a class="link" href="/settings">Настройки</a>
-                    <a class="link" href="#" data-scroll="#contacts">Контакты</a>
-                    <li style="float: right; font-size: small;"><a href="/sign-in">Авторизация/Регистрация</a></li>
-                    <!-- <a class="link" href="#"><i class="fa-solid fa-magnifying-glass"></i></a>
-                    <a class="link" href="#"><i class="fa-solid fa-cart-shopping"></i></a> -->
-                </nav>
-            </div>
-        </div>
-    </header>
     <div class="login">
         <h1>Авторизация</h1>
         <form action="" method="post">
-            <div className="username">
-                <label for="username">
-                    <i>Логин</i>
-                </label>
-                <input type="text" name="username" placeholder="" id="username" required>
-            </div>
-            <div className="password">
-                <label for="password">
-                    <i>Пароль</i>
-                </label>
-                <input type="password" name="password" placeholder="" id="password" required>
-            </div>
+            <label for="username">Логин</label>
+            <input type="text" name="username" id="username" required>
+            <label for="password">Пароль</label>
+            <input type="password" name="password" id="password" required>
             <div class="msg">{{ msg }}</div>
             <input type="submit" value="Войти">
         </form>

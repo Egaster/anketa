@@ -1,0 +1,94 @@
+body {
+    font-family: 'Montserrat', sans-serif;
+    background-color: #f4f4f4;
+}
+.login {
+    width: 300px;
+    padding: 16px;
+    background-color: #ffffff;
+    box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.15);
+    margin: 100px auto;
+}
+.login h1 {
+    text-align: center;
+    color: rgb(124, 108, 108);
+    font-size: 24px;
+    padding: 20px 0 20px 0;
+    border-bottom: 1px solid #dee0e4;
+}
+.login input[type="text"],
+.login input[type="password"] {
+    display: block;
+    box-sizing: border-box;
+    margin-bottom: 20px;
+    padding: 4px;
+    width: 100%;
+    height: 32px;
+    border: 1px solid #dee0e4;
+    outline: none;
+    font-size: 15px;
+}
+.login input[type="submit"] {
+    width: 100%;
+    height: 40px;
+    background-color: rgb(124, 108, 108);
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+.login input[type="submit"]:hover {
+    background-color: #726c7f;
+}
+.login .links a {
+    color: #5b6574;
+}
+.login .links a:hover {
+    color: #726c7f;
+}
+
+/* registration_style */
+
+.register {
+    width: 500px;
+    margin: 50px auto;
+    padding: 30px;
+    background-color: #fff;
+    box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.1);
+}
+
+.register h1 {
+    text-align: center;
+    color: rgb(124, 108, 108);
+    font-size: 24px;
+    padding: 20px 0 20px 0;
+    border-bottom: 1px solid #dee0e4;
+}
+
+.register form div {
+    margin-bottom: 15px;
+}
+
+.register form label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+.register form input[type="text"],
+.register form input[type="password"],
+.register form input[type="name"],
+.register form input[type="phone"] {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+}
+
+.register form input[type="submit"] {
+    width: 100%;
+    padding: 10px;
+    background-color: rgb(124, 108, 108);
+    color: #fff;
+    border: none;
+    cursor: pointer;
+}
+
+
