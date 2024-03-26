@@ -40,10 +40,10 @@ h1, h2, h3, h4, h5, h6 {
     height: 100vh;
     position: relative;
     min-height: 620px;
-
+   
     background: 
-        linear-gradient(rgba(209, 209, 209, 0.7), rgba(0, 0, 0, 0.8)), 
-        url(../css/images/banner_gears_1.jpg) center no-repeat;
+        linear-gradient(rgba(167, 153, 153, 0.7), rgba(0, 0, 0, 0.8)), 
+        url(../css/images/home_banner.jpg) center no-repeat;
     background-size: cover;
     position: relative;
      
