@@ -52,33 +52,73 @@
                   <a class="btn" href="#">Заполни анкету</a>
               </div>
           </div>
-          <!-- <div class="slider">
+          <div class="slider">
               <div class="container">
                   <div class="slider__inner">
                       <div class="slider__item active">
-                      <a class="btn2" href="#" data-scroll="#main"> <span class="slider__num">01 Анкета</span> </a>
-                          
+                          <a class="btn2" href="#" data-scroll="#about"> <span class="slider__num">Плюсы и минусы суденого банкротства</span> </a>  
                       </div>
                       <div class="slider__item active">
-                          <a class="btn2" href="judicial_bankruptcy.html"> <span class="slider__num">02 Суденое банкротство</span> </a>
-                          
-                      </div>
-                      <div class="slider__item active">
-                          <a class="btn2" href="out-of-court_bankruptcy.html"> <span class="slider__num">03 Внесудебное банкротство</span> </a>
-                          
-                      </div>
-                      <div class="slider__item active">
-                          <a class="btn2" href="#" data-scroll="#contacts"> <span class="slider__num">04 Контакты</span> </a>
-                          
-                      </div>
+                          <a class="btn2" href="#" data-scroll="#about"> <span class="slider__num">Плюсы и минусы внесудебного банкротства</span> </a> 
+                      </div> 
                   </div>
               </div>
-          </div> -->
+          </div>
       </div>
 
       
        <!--MAKED-->
 
+       <section class="section__green" id="about">
+        <div class="container">
+    
+            <div class="section__header">
+                <h2 class="section__title">Плюсы и минусы</h2>
+            </div>
+            <div class="wedo">
+                <div class="accordion">
+                    
+                    <div class="accordion__item"  data-collapse="#wedo_2">
+                        <div class="accordion__header" >
+                            <div class="accordion__icon">
+                                <i class="fa-solid fa-check"></i>
+                            </div>
+                            <div class="accordion__title"><h3>Судебное банкротство</h3></div>
+                        </div>
+                        <div class="accordion__content" id="wedo_2">
+                            <h3>Плюсы</h3>
+                            <p>• помочь всем, кто заинтересован в открытии своего малого бизнеса по производству строительных смесей и материалов;</p>
+                            <p>• увеличить процент безотходности деревообрабатывающей промышленности России;</p>
+                            <p>• помочь нашим клиентам создать рабочие места в районах богатыми лесными ресурсами, но географически удалённых от областных центров;</p>
+                            <h3>Минусы</h3>
+                            <p>• увеличить глубину переработки древесины на местном уровне;</p>
+                            <p>• дать людям реальные инструменты для строительства своими руками недорогих жилых домов.</p>
+                        </div>
+                    </div>
+
+                    <div class="accordion__item" data-collapse="#wedo_3">
+                        <div class="accordion__header">
+                            <div class="accordion__icon">
+                                <i class="fa-solid fa-check"></i>
+                            </div>
+                            <div class="accordion__title"><h3>Внесудебное банкротство</h3></div>
+                        </div>
+                        <div class="accordion__content" id="wedo_3">
+                            <h3>Плюсы</h3>
+                            <p>• помочь всем, кто заинтересован в открытии своего малого бизнеса по производству строительных смесей и материалов;</p>
+                            <p>• увеличить процент безотходности деревообрабатывающей промышленности России;</p>
+                            <p>• помочь нашим клиентам создать рабочие места в районах богатыми лесными ресурсами, но географически удалённых от областных центров;</p>
+                            <h3>Минусы</h3>
+                            <p>• увеличить глубину переработки древесины на местном уровне;</p>
+                            <p>• дать людям реальные инструменты для строительства своими руками недорогих жилых домов.</p>
+                        </div>
+                    </div>
+                </div><!-- /.accordion -->
+    
+                
+            </div>
+        </div>
+    </section>
 
       <footer class="small__section" id="contacts">
           <div class="container">
@@ -106,38 +146,7 @@
 
       <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js">
       </script>
-      <script src="../assets/js/app.js"></script>
-
-      <!--Корзина-->
-      <link rel="stylesheet" href="smartbasket/css/smartbasket.min.css">
-
-      <div class="smart-basket__wrapper"></div>
-
-      <script src="./smartbasket/js/smartbasket.min.js"></script>
-
-          <script>
-              $(function () {
-                  $('.smart-basket__wrapper').smbasket({
-                      productElement: 'клас обвертки карточки товара',
-                      buttonAddToBasket: 'клас кнопки купить',
-                      productPrice: 'product__price-number',
-                      productSize: 'product__size-element',
-                      
-                      productQuantityWrapper: 'product__quantity',
-                      smartBasketMinArea: 'класс корзины',
-                      countryCode: '+7',
-                      smartBasketCurrency: '₽',
-                      smartBasketMinIconPath: './smartbasket/img/shopping-basket-wight.svg',
-
-                      agreement: {
-                          isRequired: true,
-                          isChecked: true,
-                          isLink: 'https://artstranger.ru/privacy.html',
-                      },
-                      nameIsRequired: false,
-                  });
-              });
-          </script>
+      <script src="../static/css/app.js"></script>
       
     </body>
 </html>

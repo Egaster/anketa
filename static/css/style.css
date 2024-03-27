@@ -299,7 +299,8 @@ align-items: center;
 
 .section__green {
     padding: 60px 0;
-    background-color: #a9d4cd;
+    background-color: #f7fffe;
+    border-top:2px solid rgb(0, 0, 0);
 }
 
 .section__header {
@@ -589,7 +590,6 @@ align-items: center;
 
 /* We do */
 .wedo {
-    display: flex;
     margin: 0 5px;
 }
 
@@ -609,7 +609,7 @@ align-items: center;
 
 .accordion__item {
     margin-bottom: 10px;
-    border: 2px solid #ffffff;
+    border: 2px solid #1b1818;
 }
 
 .accordion__item.active .accordion__content {
@@ -617,7 +617,7 @@ align-items: center;
 }
 
 .accordion__item.active .accordion__header {
-    border-bottom-color: #ffffff;
+    border-bottom-color: #1b1818;
 }
 
 .accordion__item.active .accordion__header:after {
@@ -639,8 +639,8 @@ align-items: center;
     width: 16px;
     height: 16px;
 
-    border-top: 2px solid rgb(255, 255, 255);
-    border-right: 2px solid rgb(255, 255, 255);
+    border-top: 2px solid #1b1818;
+    border-right: 2px solid #1b1818;
 
     position: absolute;
     top: 50%;
