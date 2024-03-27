@@ -189,10 +189,9 @@ align-items: center;
     margin: 0 13px;
     position: relative;
     float: right; 
-    font-size: small;
+    font-size: 15;
     color: rgb(124, 108, 108);
     text-transform: none;
-
     transition: color .3s linear;
 }
 
