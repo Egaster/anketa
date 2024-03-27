@@ -138,7 +138,7 @@ align-items: center;
 /*nav*/
 
 .nav {
-    font-size: 15px;
+    font-size: 13px;
     text-transform: uppercase;
     color: #715902;
 }
@@ -189,7 +189,7 @@ align-items: center;
     margin: 0 13px;
     position: relative;
     float: right; 
-    font-size: 15;
+    font-size: 13;
     color: rgb(124, 108, 108);
     text-transform: none;
     transition: color .3s linear;

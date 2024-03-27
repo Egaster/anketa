@@ -34,6 +34,11 @@ def form():
 def home():
     return render_template('home.html')  # Главная
 
+@app.route('/need')
+def need():
+    return render_template('need.html')  # Главная
+
+
 @app.route('/judicial_bankruptcy')
 def judicial_bankruptcy_info():
     return render_template('judicial_bankruptcy.html') # Общая информация про судебное или внесудебное
