@@ -22,16 +22,40 @@ questions = {q['id']: q for q in data['Questions']}
 
 @app.route('/form', methods=['GET', 'POST'])
 def form():
+    if 'history' not in session:
+        session['history'] = []
+    if 'answers' not in session:
+        session['answers'] = {}
+
     if request.method == 'POST':
-        next_id = request.form.get('next')
-        return redirect(url_for('form', question_id=next_id))
+        next_id = int(request.form.get('next'))
+        answer = 'yes' if next_id == int(questions[int(session['history'][-1])]['next']['yes']) else 'no'
+        session['answers'][str(session['history'][-1])] = answer
+        session['history'].append(str(next_id))
+        session.modified = True
     else:
         question_id = int(request.args.get('question_id', 1))
-        question = questions[question_id]
-        return render_template('form.html', question=question)
+        if str(question_id) not in session['history']:
+            session['history'].append(str(question_id))
+        session.modified = True
+
+    question = questions[int(session['history'][-1])]
+    return render_template('form.html', question=question)
+
+@app.route('/back', methods=['GET'])
+def back():
+    if len(session['history']) > 1:  
+        session['history'].pop()  
+        session.modified = True
+    return redirect(url_for('form', question_id=session['history'][-1]))
+
 
 @app.route('/')
 def home():
+    if 'history' in session:
+        session['history'] = []
+    if 'answers' in session:
+        session['answers'] = {}
     return render_template('home.html')  # Главная
 
 @app.route('/judicial_bankruptcy')

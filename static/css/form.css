@@ -1,0 +1,41 @@
+/* Стили для формы */
+.form {
+    width: 80%;
+    margin: 20px auto;
+    padding: 20px;
+    border: 2px solid rgb(60, 57, 57);
+    border-radius: 5px;
+    background-color: #fff;
+}
+
+/* Стили для заголовка вопроса */
+.question {
+    font-size: 20px;
+    font-weight: 700;
+    color: rgb(36, 34, 34);
+    margin-bottom: 10px;
+}
+
+/* Стили для вариантов ответа */
+.answer {
+    font-size: 15px;
+    color: rgb(124, 108, 108);
+    margin-bottom: 10px;
+}
+
+/* Стили для кнопок */
+.button {
+    font-size: 15px;
+    color: #fff;
+    background-color: rgb(124, 108, 108);
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    text-decoration: none;
+    transition: background-color .3s linear;
+}
+
+.button:hover {
+    background-color: rgb(60, 57, 57);
+}
