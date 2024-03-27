@@ -138,7 +138,7 @@ align-items: center;
 /*nav*/
 
 .nav {
-    font-size: 15px;
+    font-size: 13px;
     text-transform: uppercase;
     color: #715902;
 }
@@ -189,7 +189,7 @@ align-items: center;
     margin: 0 13px;
     position: relative;
     float: right; 
-    font-size: 15;
+    font-size: 13;
     color: rgb(124, 108, 108);
     text-transform: none;
     transition: color .3s linear;
@@ -293,7 +293,7 @@ align-items: center;
 
 /* Section */
 .section {
-    padding: 60px 0;
+    padding: 45px 0;
     background-color: rgba(247, 239, 239, 0.76);
 }
 
@@ -306,7 +306,6 @@ align-items: center;
     width: 100%;
     max-width: 950px;
     margin: -7px auto;
-
     text-align: center;
 }
 
@@ -320,7 +319,7 @@ align-items: center;
     font-size: 30px;
     font-weight: 700;
     color: #333;
-    text-transform: capitalize;
+    text-transform: none;
     margin: -8px auto;
 }
 

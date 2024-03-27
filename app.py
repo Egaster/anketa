@@ -3,6 +3,7 @@ from flask_mysqldb import MySQL
 import MySQLdb.cursors
 import re
 import hashlib
+import json
 
 app = Flask(__name__)
 app.secret_key = ' key'
@@ -15,10 +16,28 @@ app.config['MYSQL_DB'] = 'LOGIN'
 
 mysql = MySQL(app)
 
+with open('questions.json', 'r', encoding='utf8') as f:
+    data = json.load(f)
+questions = {q['id']: q for q in data['Questions']}
+
+@app.route('/form', methods=['GET', 'POST'])
+def form():
+    if request.method == 'POST':
+        next_id = request.form.get('next')
+        return redirect(url_for('form', question_id=next_id))
+    else:
+        question_id = int(request.args.get('question_id', 1))
+        question = questions[question_id]
+        return render_template('form.html', question=question)
 
 @app.route('/')
 def home():
     return render_template('home.html')  # Главная
+
+@app.route('/need')
+def need():
+    return render_template('need.html')  # Главная
+
 
 @app.route('/judicial_bankruptcy')
 def judicial_bankruptcy_info():
