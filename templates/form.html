@@ -11,6 +11,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no, target-densityDpi=device-dpi" />
         <!--Привязка css-->
         <link rel="stylesheet" href="../static/css/style.css">
+        <link rel="stylesheet" href="../static/css/form.css">
         <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap" rel="stylesheet">
         <script src="https://kit.fontawesome.com/c3770d0828.js" crossorigin="anonymous"></script>
     </head>
@@ -43,7 +44,6 @@
                 </div>
             </div>
         </header>
-
         <section class="section">
             <div class="container__section">
         
@@ -51,19 +51,30 @@
                     <h2 class="section__title">Анкета</h2>
                 </div>
                 <div class="card__group">
-                    Lorem ipsum dolor sit, amet consectetur adipisicing elit. Temporibus officia dolorem amet ipsa delectus distinctio consequatur dolores. Fugiat possimus ipsum explicabo culpa aspernatur repellat, sed quia at dolores quod nisi, non adipisci cumque ducimus architecto deserunt, impedit exercitationem. Nulla tempore veniam adipisci dolorem excepturi totam, fuga illo voluptatum. Maiores atque possimus repudiandae, quas quaerat, eum labore porro aut corporis, cum rerum consequuntur ipsum? Commodi consectetur fuga reiciendis praesentium perspiciatis est eaque nam, ullam omnis magnam maxime dignissimos eos optio dolores molestias! Minima eos ad enim aut eum qui dolorem laborum dignissimos, maiores odit ab temporibus. Beatae debitis consectetur voluptate quam maiores quasi similique nisi ullam possimus aliquid quisquam eligendi quia rem animi cum mollitia, provident facere eius suscipit, incidunt totam architecto hic! Cumque neque distinctio quisquam hic rem adipisci delectus illo. Quia iste error quisquam!
+                    Lorem ipsum dolor sit, amet consectetur adipisicing elit. Temporibus officia dolorem amet ipsa delectus distinctio consequatur dolores. Fugiat possimus ipsum explicabo culpa aspernatur repellat, sed quia at dolores quod nisi, non adipisci cumque ducimus architecto deserunt, impedit exercitationem. Nulla tempore veniam adipisci dolorem excepturi totam, fuga illo voluptatum. Maiores atque possimus repudiandae, quas quaerat, eum labore porro aut corporis, cum rerum consequuntur ipsum? Commodi consectetur fuga reiciendis praesentium perspiciatis est eaque nam, ullam omnis magnam maxime dignissimos eos optio dolores molestias! Minima eos ad enim aut eum qui dolorem laborum dignissimos, maiores odit ab temporibus.
                 </div><!--/.card-->
-                <form method="POST">
-                    <h1>{{ question.text }}</h1>
+                <form class='form' method="POST">
+                    <h1 class="question" id="question{{ question.id }}">{{ question.text }}</h1>
                     {% if question.id > 0 %}
-                        <input type="radio" id="yes" name="next" value="{{ question.next.yes }}">
-                        <label for="yes">Да</label><br>
-                        <input type="radio" id="no" name="next" value="{{ question.next.no }}">
-                        <label for="no">Нет</label><br>
-                        <input type="submit" value="Далее">
+                        <div class="answer-group">
+                            <input class="answer" type="radio" id="yes" name="next" value="{{ question.next.yes }}">
+                            <label for="yes">Да</label>
+                        </div>
+                        <div class="answer-group">
+                            <input class="answer" type="radio" id="no" name="next" value="{{ question.next.no }}">
+                            <label for="no">Нет</label>
+                        </div>
+                        <div class="buttons">
+                            {% if question.id != 1 %}
+                                <a class="button" href="{{ url_for('back') }}">Назад</a>
+                            {% endif %}
+                            <input class="button" type="submit" value="Далее">
+                        </div>
                     {% endif %}
                 </form>
-
+                
+                
+                
         </section>
 
         <footer class="small__section" id="contacts">
