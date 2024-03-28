@@ -675,6 +675,29 @@ align-items: center;
     text-transform: uppercase;
 }
 
+ul {
+    margin-top: 0;
+}
+
+.table {
+    width: 100%;
+    border-collapse: collapse;
+}
+.table_td {
+    border: 1px solid black;
+    text-align: justify;
+    padding: 10px;
+    /* word-wrap: break-word; */
+    vertical-align: top;
+}
+
+.table_th {
+    border: 1px solid black;
+    text-align: center;
+    padding: 10px;
+
+}
+
 .small__section{
     height: 170px;
     border-top:2px solid rgb(42, 40, 40);
