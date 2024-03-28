@@ -4,9 +4,11 @@ import MySQLdb.cursors
 import re
 import hashlib
 import json
+import logging
 
 app = Flask(__name__)
 app.secret_key = ' key'
+app.logger.setLevel(logging.DEBUG)
 
 app.config['MYSQL_HOST'] = '127.0.0.1'
 app.config['MYSQL_USER'] = 'user'
@@ -15,6 +17,7 @@ app.config['MYSQL_DB'] = 'LOGIN'
 
 
 mysql = MySQL(app)
+
 
 with open('questions.json', 'r', encoding='utf8') as f:
     data = json.load(f)
@@ -80,7 +83,6 @@ def profile():
 def settings():
     return render_template('settings.html')  # Настройки
 
-
 @app.route('/sign-in', methods=['GET', 'POST'])
 def sign_in():
     msg = ''
@@ -133,6 +135,8 @@ def sign_up():
 def logout():
     session.pop('loggedin', None)
     return redirect(url_for('home'))
+
+
 
 if __name__ == "__main__":
     app.run(debug=True)

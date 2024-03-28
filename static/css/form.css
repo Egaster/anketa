@@ -14,14 +14,23 @@
     font-weight: 700;
     color: rgb(36, 34, 34);
     margin-bottom: 10px;
+} 
+
+.answer-group {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
 }
 
-/* Стили для вариантов ответа */
 .answer {
     font-size: 15px;
     color: rgb(124, 108, 108);
     margin-bottom: 10px;
+    margin-right: 10px;  /* Добавлено */
+    vertical-align: middle;
 }
+
+
 
 /* Стили для кнопок */
 .button {
@@ -38,4 +47,9 @@
 
 .button:hover {
     background-color: rgb(60, 57, 57);
+}
+
+.buttons {
+    display: flex;
+    justify-content: space-between;
 }
