@@ -17,24 +17,23 @@
         <div class="container">
             <div class="header__inner">
                 <div class="logo">
-                <a class="logo_link" href="../" data-scroll="#main">Банкрот-эксперт</a>
+                  <a class="logo_link" href="#" data-scroll="#main">Банкрот-эксперт</a>
                 </div>
-  
-                <nav class="nav">
-                  <a class="link" href="/need">Нужно ли банкротиться?</a>
-                  <a class="link" href="/judicial_bankruptcy">Судебное банкротство</a>
-                  <a class="link" href="/out-of-court_bankruptcy">Внесудебное банкротство</a>
-                  <a class="link" href="/settings">Настройки</a>
-                  <a class="link" href="#" data-scroll="#contacts">Контакты</a>
+                  <nav class="nav">
+                          <a class="link" href="/need">Нужно ли банкротиться?</a>
+                          <a class="link" href="/judicial_bankruptcy">Судебное банкротство</a>
+                          <a class="link" href="/out-of-court_bankruptcy">Внесудебное банкротство</a>
+                  </nav>
+                <div>
                   {% if 'loggedin' in session %}
-                  <a class="link_auto" href="/profile">Профиль</a>
-                  <form action="/logout" method="post">
-                      <input class="link_auto" type="submit" value="Выйти">
-                  </form>
-                  {% else %}
-                  <a class="link_auto" href="/sign-in">Войти</a>
+                      <a class="link_auto" href="/profile">Профиль</a>
+                      <form action="/logout" method="post">
+                          <input class="link_auto" type="submit" value="Выйти">
+                      </form>
+                      {% else %}
+                      <a class="link_auto" href="/sign-in">Войти</a>
                   {% endif %}
-                </nav>
+                </div>
             </div>
         </div>
     </header>
