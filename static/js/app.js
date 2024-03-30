@@ -1,5 +1,4 @@
 $(function(){
-
     /*Smooth Scroll*/
     $("[data-scroll]").on("click", function(event){
         event.preventDefault();
@@ -21,5 +20,5 @@ $(function(){
         
         $this.toggleClass("active");
     });
-
+    
 });
