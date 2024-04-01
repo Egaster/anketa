@@ -17,8 +17,6 @@
     </head>
     <!--Отображаемое тело страницы-->
     <body>
-
-
         <header class="header__group">
             <div class="container">
                 <div class="header__inner">
@@ -50,7 +48,9 @@
                     <h2 class="section__title">Анкета</h2>
                 </div>
                 <div class="card__group">
-                    Lorem ipsum dolor sit, amet consectetur adipisicing elit. Temporibus officia dolorem amet ipsa delectus distinctio consequatur dolores. Fugiat possimus ipsum explicabo culpa aspernatur repellat, sed quia at dolores quod nisi, non adipisci cumque ducimus architecto deserunt, impedit exercitationem. Nulla tempore veniam adipisci dolorem excepturi totam, fuga illo voluptatum. Maiores atque possimus repudiandae, quas quaerat, eum labore porro aut corporis, cum rerum consequuntur ipsum? Commodi consectetur fuga reiciendis praesentium perspiciatis est eaque nam, ullam omnis magnam maxime dignissimos eos optio dolores molestias! Minima eos ad enim aut eum qui dolorem laborum dignissimos, maiores odit ab temporibus.
+                    {% if question.id == 1 %}
+                    <p id="text">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Temporibus officia dolorem amet ipsa delectus distinctio consequatur dolores. Fugiat possimus ipsum explicabo culpa aspernatur repellat, sed quia at dolores quod nisi, non adipisci cumque ducimus architecto deserunt, impedit exercitationem. Nulla tempore veniam adipisci dolorem excepturi totam, fuga illo voluptatum. Maiores atque possimus repudiandae, quas quaerat, eum labore porro aut corporis, cum rerum consequuntur ipsum? Commodi consectetur fuga reiciendis praesentium perspiciatis est eaque nam, ullam omnis magnam maxime dignissimos eos optio dolores molestias! Minima eos ad enim aut eum qui dolorem laborum dignissimos, maiores odit ab temporibus.</p>
+                    {% endif %}
                 </div><!--/.card-->
                 <form class='form' method="POST">
                     <h1 class="question" id="question{{ question.id }}">{{ question.text }}</h1>
@@ -71,9 +71,6 @@
                         </div>
                     {% endif %}
                 </form>
-                
-                
-                
         </section>
 
         <footer class="small__section" id="contacts">
@@ -86,7 +83,5 @@
                 <div class="small__text">© 2024 Банкрот-эксперт</div>
             </div>
         </footer> <!--MAKED-->
-
-
     </body>
 </html>
