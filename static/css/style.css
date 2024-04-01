@@ -42,7 +42,7 @@ h1, h2, h3, h4, h5, h6 {
    
     background: 
         linear-gradient(rgba(167, 153, 153, 0.7), rgba(0, 0, 0, 0.8)), 
-        url(../css/images/home_banner.jpg) center no-repeat;
+        url(../css/images/Home_banner_2.jpeg) center no-repeat;
     background-size: cover;
     position: relative;
      
@@ -299,8 +299,8 @@ align-items: center;
 
 .section__green {
     padding: 60px 0;
-    background-color: #fbfbfb;
-    border-top:2px solid rgb(0, 0, 0);
+    background-color: #f5fff6;
+    border-top:3px solid rgb(224, 255, 222);
 }
 
 .section__header {
