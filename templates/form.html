@@ -53,8 +53,8 @@
                     {% endif %}
                 </div><!--/.card-->
                 <form class='form' method="POST">
-                    <h1 class="question" id="question{{ question.id }}">{{ question.text }}</h1>
                     {% if question.id > 0 %}
+                    <h1 class="question" id="question{{ question.id }}">{{ question.text }}</h1>
                         <div class="answer-group">
                             <input class="answer" type="radio" id="yes" name="next" value="{{ question.next.yes }}">
                             <label for="yes">Да</label>
@@ -64,11 +64,14 @@
                             <label for="no">Нет</label>
                         </div>
                         <div class="buttons">
-                            {% if question.id != 1 %}
-                                <a class="button" href="{{ url_for('back') }}">Назад</a>
-                            {% endif %}
                             <input class="button" type="submit" value="Далее">
+                            {% if question.id != 1 %}
+                            <a class="button" href="{{ url_for('back') }}">Назад</a>
+                            {% endif %}
                         </div>
+                    {% else %}
+                    <h1 class="question" id="question{{ question.id }}">Банкротство вам не подходит. Почему?</h1>
+                    <div class="card__group"> {{res.text}}</div>
                     {% endif %}
                 </form>
         </section>

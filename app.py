@@ -23,6 +23,12 @@ with open('questions.json', 'r', encoding='utf8') as f:
     data = json.load(f)
 questions = {q['id']: q for q in data['Questions']}
 
+
+with open('results.json', 'r', encoding='utf8') as f:
+    data = json.load(f)
+results = {r['id']: r for r in data['Results']}
+
+
 @app.route('/form', methods=['GET', 'POST'])
 def form():
     if 'history' not in session:
@@ -42,7 +48,12 @@ def form():
             session['history'].append(str(question_id))
         session.modified = True
 
-    question = questions[int(session['history'][-1])]
+    question_id = int(session['history'][-1])
+    question = questions[question_id]
+    if question_id < 0:
+        print(session['history'])
+        res = results[int(session['history'][-2])]
+        return render_template('form.html', question=question, res=res)
     return render_template('form.html', question=question)
 
 @app.route('/back', methods=['GET'])
@@ -51,7 +62,6 @@ def back():
         session['history'].pop()  
         session.modified = True
     return redirect(url_for('form', question_id=session['history'][-1]))
-
 
 @app.route('/')
 def home():
