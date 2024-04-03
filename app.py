@@ -15,14 +15,11 @@ app.config['MYSQL_USER'] = 'user'
 app.config['MYSQL_PASSWORD'] = ''
 app.config['MYSQL_DB'] = 'LOGIN'
 
-
 mysql = MySQL(app)
-
 
 with open('questions.json', 'r', encoding='utf8') as f:
     data = json.load(f)
 questions = {q['id']: q for q in data['Questions']}
-
 
 with open('results.json', 'r', encoding='utf8') as f:
     data = json.load(f)
@@ -59,12 +56,14 @@ def form():
         return render_template('form.html', question=question, res=res)
     return render_template('form.html', question=question)
 
+
 @app.route('/back', methods=['GET'])
 def back():
-    if len(session['history']) > 1:  
-        session['history'].pop()  
+    if len(session['history']) > 1:
+        session['history'].pop()
         session.modified = True
     return redirect(url_for('form', question_id=session['history'][-1]))
+
 
 @app.route('/')
 def home():
@@ -74,6 +73,7 @@ def home():
         session['answers'] = {}
     return render_template('home.html')  # Главная
 
+
 @app.route('/need')
 def need():
     return render_template('need.html')  # Главная
@@ -81,11 +81,13 @@ def need():
 
 @app.route('/judicial_bankruptcy')
 def judicial_bankruptcy_info():
-    return render_template('judicial_bankruptcy.html') # Общая информация про судебное или внесудебное
-                                        
+    return render_template('judicial_bankruptcy.html')  # Общая информация про судебное или внесудебное
+
+
 @app.route('/out-of-court_bankruptcy')
 def out_of_court_bankruptcy_info():
-    return render_template('out-of-court_bankruptcy.html') # Общая информация про судебное или внесудебное
+    return render_template('out-of-court_bankruptcy.html')  # Общая информация про судебное или внесудебное
+
 
 @app.route('/full_info')
 def full_info():
@@ -100,6 +102,7 @@ def profile():
 @app.route('/settings')
 def settings():
     return render_template('settings.html')  # Настройки
+
 
 @app.route('/sign-in', methods=['GET', 'POST'])
 def sign_in():
@@ -141,7 +144,8 @@ def sign_up():
         elif not username or not hashed_password or not phone:
             msg = 'Поля должны быть заполнены!'
         else:
-            cursor.execute('INSERT INTO form (`username`, `password`, `phone`) VALUES (%s, %s, %s)', (username, hashed_password, phone,))
+            cursor.execute('INSERT INTO form (`username`, `password`, `phone`) VALUES (%s, %s, %s)',
+                           (username, hashed_password, phone,))
             mysql.connection.commit()
             msg = 'Регистрация прошла успешно!'
             return redirect(url_for('home'))
@@ -149,10 +153,12 @@ def sign_up():
         msg = 'Поля должны быть заполнены!'
     return render_template('sign_up.html', msg=msg)
 
+
 @app.route('/logout', methods=['POST'])
 def logout():
     session.pop('loggedin', None)
     return redirect(url_for('home'))
+
 
 if __name__ == "__main__":
     # app.run(debug=True)
