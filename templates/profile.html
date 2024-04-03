@@ -34,11 +34,16 @@
   </header>
     <section class="section">
       <h1>Результаты анкет</h1>
-      <table>
-          {% for qa in session_data %}
-            <p>{{ qa }}</p>
-          {% endfor %}
-      </table>
+      <div>
+        {% for qa, num in session_data.items() %}
+        <h3>Сессия {{num}}</h3>
+        {% for q in qa %}
+        <form class='form' method="POST">
+          {{q.0}} {{q.1}}
+        </form>
+        {% endfor %}
+        {% endfor %}
+      </div>
     </section>
   </body>
 </html>

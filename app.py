@@ -138,7 +138,7 @@ def profile():
     if num_of_sessions != ():
         for i in range(1, num_of_sessions[0][0]):
             saved.append(get_saved_answers_from_database(i))
-        return render_template('profile.html', session_data=saved)  # Личный кабинет с прошлыми результатами анкеты  # Личный кабинет с прошлыми результатами анкеты
+        return render_template('profile.html', session_data=dict(zip(saved, [x for x in range(1,num_of_sessions[0][0])])))  # Личный кабинет с прошлыми результатами анкеты  # Личный кабинет с прошлыми результатами анкеты
     return render_template('profile.html')
 
 def get_saved_answers_from_database(session_num):
