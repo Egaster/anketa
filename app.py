@@ -37,11 +37,14 @@ def form():
         session['answers'] = {}
 
     if request.method == 'POST':
-        next_id = int(request.form.get('next'))
-        answer = 'yes' if next_id == int(questions[int(session['history'][-1])]['next']['yes']) else 'no'
-        session['answers'][str(session['history'][-1])] = answer
-        session['history'].append(str(next_id))
-        session.modified = True
+        if request.form.get('next'):
+            next_id = int(request.form.get('next'))
+            answer = 'yes' if next_id == int(questions[int(session['history'][-1])]['next']['yes']) else 'no'
+            session['answers'][str(session['history'][-1])] = answer
+            session['history'].append(str(next_id))
+            session.modified = True
+        # else:
+
     else:
         question_id = int(request.args.get('question_id', 1))
         if str(question_id) not in session['history']:
@@ -151,8 +154,6 @@ def logout():
     session.pop('loggedin', None)
     return redirect(url_for('home'))
 
-
-
 if __name__ == "__main__":
-    # app.run(debug=True)
-    app.run(debug=False, port=80, host='0.0.0.0')
+    app.run(debug=True)
+    # app.run(debug=False, port=80, host='0.0.0.0')

@@ -14,6 +14,10 @@
         <link rel="stylesheet" href="../static/css/form.css">
         <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap" rel="stylesheet">
         <script src="https://kit.fontawesome.com/c3770d0828.js" crossorigin="anonymous"></script>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     </head>
     <!--Отображаемое тело страницы-->
     <body>
@@ -54,7 +58,12 @@
                 </div><!--/.card-->
                 <form class='form' method="POST">
                     {% if question.id > 0 %}
-                    <h1 class="question" id="question{{ question.id }}">{{ question.text }}</h1>
+                        <h1 class="question" id="question{{ question.id }}">
+                            {{ question.text }}
+                            {% if question.comment %}
+                            <img src="{{ url_for('static', filename='img/comment.png') }}" data-toggle="popover" data-content="{{ question.comment }}" alt="comment" style="width:20px;height:20px;">
+                            {% endif %}
+                        </h1>          
                         <div class="answer-group">
                             <input class="answer" type="radio" id="yes" name="next" value="{{ question.next.yes }}">
                             <label for="yes">Да</label>
@@ -87,4 +96,13 @@
             </div>
         </footer> <!--MAKED-->
     </body>
+
+    <script>
+        $(document).ready(function(){
+            $('[data-toggle="popover"]').popover({
+                offset: '45, 0'
+            }); 
+            
+        });
+    </script>
 </html>
