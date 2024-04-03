@@ -13,7 +13,7 @@
 </head>
 <body>
 
-  <header class="header">
+  <header class="header__group">
       <div class="container">
           <div class="header__inner">
               <div class="logo">
@@ -32,9 +32,14 @@
           </div>
       </div>
   </header>
-    <main>
-        
-    </main>
+    <section class="section">
+      <h1>Результаты анкет</h1>
+      <table>
+          {% for qa in session_data %}
+            <p>{{ qa }}</p>
+          {% endfor %}
+      </table>
+    </section>
   </body>
 </html>
 

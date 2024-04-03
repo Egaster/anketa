@@ -38,6 +38,7 @@ def form():
             next_id = int(request.form.get('next'))
             answer = 'yes' if next_id == int(questions[int(session['history'][-1])]['next']['yes']) else 'no'
             session['answers'][str(session['history'][-1])] = answer
+            save_answers_to_database(str(session['history'][-1]), answer)
             session['history'].append(str(next_id))
             session.modified = True
         # else:
@@ -52,9 +53,39 @@ def form():
     question = questions[question_id]
     if question_id < 0:
         print(session['history'])
+        user_id = session.get('id')  
         res = results[int(session['history'][-2])]
+        # save_answers_to_database(str(session['history'][-2]), session['answers'][str(session['history'][-2])])
+        cursor = mysql.connection.cursor()
+        cursor.execute('UPDATE sessions SET session = session + 1 \
+                       WHERE uid = %s', (user_id,))
+        mysql.connection.commit()
+        cursor.close()
         return render_template('form.html', question=question, res=res)
     return render_template('form.html', question=question)
+
+
+def save_answers_to_database(q_id, answer):
+    try:
+        user_id = session.get('id')  
+        cursor = mysql.connection.cursor()
+        cursor.execute('INSERT INTO sessions (uid, session) \
+                        SELECT %s, %s \
+                        WHERE NOT EXISTS (SELECT * FROM sessions WHERE uid = %s);', (user_id, 1, user_id, ))
+        print('here')
+        mysql.connection.commit()
+        session_number = cursor.fetchone()
+        cursor.close()
+        cursor = mysql.connection.cursor()
+        cursor.execute('SELECT session FROM sessions where uid = %s', (user_id, ))
+        session_number = cursor.fetchone()
+        cursor.close()
+        cursor = mysql.connection.cursor()
+        cursor.execute('INSERT INTO result (session, uid, qid, answer) VALUES (%s, %s, %s, %s)', (session_number, user_id, q_id, answer, ))
+        mysql.connection.commit()
+        cursor.close()
+    except Exception as e:
+        app.logger.error(f"Failed to save answers to database: {e}")
 
 
 @app.route('/back', methods=['GET'])
@@ -96,8 +127,34 @@ def full_info():
 
 @app.route('/profile')
 def profile():
-    return render_template('profile.html')  # Личный кабинет с прошлыми результатами анкеты
+    saved = []
+    cursor = mysql.connection.cursor()
+    user_id = session.get('id')
+    cursor.execute('SELECT session\
+                    FROM sessions WHERE uid = %s', (user_id,  ))
+    num_of_sessions = cursor.fetchall()
+    print(num_of_sessions)
+    cursor.close() 
+    if num_of_sessions != ():
+        for i in range(1, num_of_sessions[0][0]):
+            saved.append(get_saved_answers_from_database(i))
+        return render_template('profile.html', session_data=saved)  # Личный кабинет с прошлыми результатами анкеты  # Личный кабинет с прошлыми результатами анкеты
+    return render_template('profile.html')
 
+def get_saved_answers_from_database(session_num):
+    try:
+        cursor = mysql.connection.cursor()
+        user_id = session.get('id')
+        cursor.execute('SELECT DISTINCT questions.question, text \
+                       FROM questions JOIN result ON questions.qid = result.qid \
+                       JOIN answers ON result.answer = answers.aid\
+                       WHERE result.uid = %s AND result.session = %s', (user_id, session_num, ))
+        saved_answers = cursor.fetchall()
+        cursor.close() 
+        return saved_answers
+    except Exception as e:
+        app.logger.error(f"Failed to get saved answers from database: {e}")
+        return []
 
 @app.route('/settings')
 def settings():
