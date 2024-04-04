@@ -1,3 +1,4 @@
+
 /* Стили для формы */
 .form {
     width: 80%;
@@ -8,8 +9,10 @@
     background-color: #fff;
 }
 
+
 /* Стили для заголовка вопроса */
 .question {
+    
     font-size: 20px;
     font-weight: 700;
     color: rgb(36, 34, 34);

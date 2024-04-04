@@ -4,20 +4,17 @@
 <html lang="ru">
     <!--Заголовок страницы, контейнер для других важных данных(не отображается)-->
     <head>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
         <!--Заголовок страницы в браузере-->
         <title>Банкрот-эксперт</title>
         <!--Кодировка страницы-->
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no, target-densityDpi=device-dpi" />
         <!--Привязка css-->
-        <link rel="stylesheet" href="../static/css/style.css">
         <link rel="stylesheet" href="../static/css/form.css">
+        <link rel="stylesheet" href="../static/css/style.css">
         <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap" rel="stylesheet">
         <script src="https://kit.fontawesome.com/c3770d0828.js" crossorigin="anonymous"></script>
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     </head>
     <!--Отображаемое тело страницы-->
     <body>
@@ -25,29 +22,28 @@
             <div class="container">
                 <div class="header__inner">
                     <div class="logo">
-                      <a class="logo_link" href="../" data-scroll="#main">Банкрот-эксперт</a>
+                        <a class="logo_link" href="#" data-scroll="#main">Банкрот-эксперт</a>
                     </div>
-                      <nav class="nav">
-                              <a class="link" href="/need">Нужно ли банкротиться?</a>
-                              <a class="link" href="/judicial_bankruptcy">Судебное банкротство</a>
-                              <a class="link" href="/out-of-court_bankruptcy">Внесудебное банкротство</a>
-                      </nav>
+                    <nav class="nav">
+                        <a class="link" href="/need">Нужно ли банкротиться?</a>
+                        <a class="link" href="/judicial_bankruptcy">Судебное банкротство</a>
+                        <a class="link" href="/out-of-court_bankruptcy">Внесудебное банкротство</a>
+                    </nav>
                     <div>
                       {% if 'loggedin' in session %}
-                          <a class="link_auto" href="/profile">Профиль</a>
-                          <form action="/logout" method="post">
-                              <input class="link_auto" type="submit" value="Выйти">
-                          </form>
-                          {% else %}
-                          <a class="link_auto" href="/sign-in">Войти</a>
-                      {% endif %}
+                        <a class="link_auto" href="/profile">Профиль</a>
+                        <form action="/logout" method="post">                              <input class="link_auto" type="submit" value="Выйти">
+                        </form>
+                        {% else %}
+                        <a class="link_auto" href="/sign-in">Войти</a>
+                        {% endif %}
                     </div>
                 </div>
             </div>
         </header>
+
         <section class="section">
             <div class="container__section">
-        
                 <div class="section__header">
                     <h2 class="section__title">Анкета</h2>
                 </div>
@@ -102,6 +98,7 @@
                         <div class="card__group"> {{ res.text|safe }}</div>
                     {% endif %}
                 </form>
+            </div>
         </section>
 
         <footer class="small__section" id="contacts">
@@ -116,6 +113,9 @@
         </footer> <!--MAKED-->
     </body>
 
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <script>
         $(document).ready(function(){
             $('[data-toggle="popover"]').popover({
