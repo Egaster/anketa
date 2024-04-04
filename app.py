@@ -114,7 +114,6 @@ def sign_in():
             session['loggedin'] = True
             session['id'] = account['id']
             session['username'] = account['username']
-            # msg = 'Logged in successfully!'
             return redirect(url_for('home'))
         else:
             msg = 'Неверный логин/пароль!'
@@ -155,5 +154,5 @@ def logout():
     return redirect(url_for('home'))
 
 if __name__ == "__main__":
-    # app.run(debug=True)
-    app.run(debug=False, port=80, host='0.0.0.0')
+    app.run(debug=True)
+    # app.run(debug=False, port=80, host='0.0.0.0')
