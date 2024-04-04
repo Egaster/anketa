@@ -96,10 +96,10 @@
                     {% elif  question.id == -3 %}
                         <h1 class="question" id="question{{ question.id }}">У Вас есть возможность пройти процедуру внесудебного банкротства.</h1>
                         <div class="card__group"> {{ res.text|safe }}</div>
-                        <div class="card__group"> Подробнее про процедуру внесудебного банкротства Вы можете узнать по <a href ="/out-of-court_bankruptcy" target="_blank">ссылке</a>.</div>
+                        <div class="card__group"> Подробнее про процедуру внесудебного банкротства Вы можете узнать по <a href ="/out-of-court_bankruptcy" target="_blank"> ссылке</a>.</div>
                     {% elif  question.id == -2 %}
-                    <h1 class="question" id="question{{ question.id }}">У Вас есть возможность пройти процедуру судебного банкротства.</h1>
-                    <div class="card__group"> {{ res.text|safe }}</div>
+                        <h1 class="question" id="question{{ question.id }}">У Вас есть возможность пройти процедуру судебного банкротства.</h1>
+                        <div class="card__group"> {{ res.text|safe }}</div>
                     {% endif %}
                 </form>
         </section>
