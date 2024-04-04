@@ -662,7 +662,7 @@ align-items: center;
 .accordion__content {
     padding: 5px 20px;
     display: none;
-
+    user-select: text;
     font-size: 15px;
     color: rgb(35, 32, 32);
     font-style: italic;

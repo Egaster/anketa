@@ -22,6 +22,11 @@
     margin-bottom: 10px;
 }
 
+.answer:hover, label:hover {
+    cursor: pointer;
+}
+
+
 .answer {
     font-size: 15px;
     color: rgb(124, 108, 108);
