@@ -36,12 +36,15 @@ def form():
     if request.method == 'POST':
         if request.form.get('next'):
             next_id = int(request.form.get('next'))
-            answer = 'yes' if next_id == int(questions[int(session['history'][-1])]['next']['yes']) else 'no'
+            answer = 'yes' if next_id == int(questions[int(session['history'][-1])]['next'].get('yes', 0)) else 'no'
+            if 'end' in questions[int(session['history'][-1])]['next'] and next_id == int(questions[int(session['history'][-1])]['next']['end']):
+                answer = 'end'
+            if 'again' in questions[int(session['history'][-1])]['next'] and next_id == int(questions[int(session['history'][-1])]['next']['again']):
+                answer = 'again'
             session['answers'][str(session['history'][-1])] = answer
             save_answers_to_database(str(session['history'][-1]), answer)
             session['history'].append(str(next_id))
             session.modified = True
-        # else:
 
     else:
         question_id = int(request.args.get('question_id', 1))
@@ -55,14 +58,15 @@ def form():
         print(session['history'])
         user_id = session.get('id')  
         res = results[int(session['history'][-2])]
-        # save_answers_to_database(str(session['history'][-2]), session['answers'][str(session['history'][-2])])
         cursor = mysql.connection.cursor()
         cursor.execute('UPDATE sessions SET session = session + 1 \
                        WHERE uid = %s', (user_id,))
         mysql.connection.commit()
         cursor.close()
+        print(res)
         return render_template('form.html', question=question, res=res)
     return render_template('form.html', question=question)
+
 
 
 def save_answers_to_database(q_id, answer):
@@ -217,5 +221,5 @@ def logout():
 
 
 if __name__ == "__main__":
-    app.run(debug=True)
-    # app.run(debug=False, port=80, host='0.0.0.0')
+    # app.run(debug=True)
+    app.run(debug=False, port=80, host='0.0.0.0')

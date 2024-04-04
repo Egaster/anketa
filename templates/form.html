@@ -61,26 +61,41 @@
                         <h1 class="question" id="question{{ question.id }}">
                             {{ question.text }}
                             {% if question.comment %}
-                            <img src="{{ url_for('static', filename='img/comment.png') }}" data-toggle="popover" data-content="{{ question.comment }}" alt="comment" style="width:20px;height:20px;">
+                                <img src="{{ url_for('static', filename='img/comment.png') }}" data-toggle="popover" data-content="{{ question.comment }}" alt="comment" style="width:20px;height:20px;">
                             {% endif %}
-                        </h1>          
-                        <div class="answer-group">
-                            <input class="answer" type="radio" id="yes" name="next" value="{{ question.next.yes }}">
-                            <label for="yes">Да</label>
-                        </div>
-                        <div class="answer-group">
-                            <input class="answer" type="radio" id="no" name="next" value="{{ question.next.no }}">
-                            <label for="no">Нет</label>
-                        </div>
-                        <div class="buttons">
-                            <input class="button" type="submit" value="Далее">
-                            {% if question.id != 1 %}
-                            <a class="button" href="{{ url_for('back') }}">Назад</a>
-                            {% endif %}
-                        </div>
+                        </h1>     
+                        {% if question.id != 9 %}     
+                            <div class="answer-group">
+                                <input class="answer" type="radio" id="yes" name="next" value="{{ question.next.yes }}">
+                                <label for="yes">Да</label>
+                            </div>
+                        {% endif %}
+                            <div class="answer-group">
+                                <input class="answer" type="radio" id="no" name="next" value="{{ question.next.no }}">
+                                <label for="no">Нет</label>
+                            </div>
+                        {% if question.id == 9 %}
+                            <div class="answer-group">
+                                <input class="answer" type="radio" id="end" name="next" value="{{ question.next.end }}">
+                                <label for="end">Производство закончено в связи с отсутствием имущества</label>
+                            </div>
+                            <div class="answer-group">
+                                <input class="answer" type="radio" id="again" name="next" value="{{ question.next.again }}">
+                                <label for="again">Производство окончено, но после этого возбуждено новое</label>
+                            </div>
+                        {% endif %}
+                            <div class="buttons">
+                                <input class="button" type="submit" value="Далее">
+                                {% if question.id != 1 %}
+                                <a class="button" href="{{ url_for('back') }}">Назад</a>
+                                {% endif %}
+                            </div>
+                    {% elif question.id == -1%}
+                        <h1 class="question" id="question{{ question.id }}">Банкротство вам не подходит. Почему?</h1>
+                        <div class="card__group"> {{res.text}}</div>
                     {% else %}
-                    <h1 class="question" id="question{{ question.id }}">Банкротство вам не подходит. Почему?</h1>
-                    <div class="card__group"> {{res.text}}</div>
+                        <h1 class="question" id="question{{ question.id }}">Вы можете пройти процедуру банкротства</h1>
+                        <div class="card__group"> {{res.text}}</div>
                     {% endif %}
                 </form>
         </section>
