@@ -93,9 +93,9 @@
                     {% elif question.id == -1%}
                         <h1 class="question" id="question{{ question.id }}">Банкротство вам не подходит. Почему?</h1>
                         <div class="card__group"> {{res.text}}</div>
-                    {% else %}
-                        <h1 class="question" id="question{{ question.id }}">Вы можете пройти процедуру банкротства</h1>
-                        <div class="card__group"> {{res.text}}</div>
+                    {% elif  question.id == -3 %}
+                        <h1 class="question" id="question{{ question.id }}">У Вас есть возможность пройти процедуру внесудебного банкротства.</h1>
+                        <div class="card__group"> {{ res.text|safe }}</div>
                     {% endif %}
                 </form>
         </section>
