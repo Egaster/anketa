@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, redirect, url_for, session
+from flask import Flask, render_template, request, redirect, url_for, session, send_from_directory
 from flask_mysqldb import MySQL
 import MySQLdb.cursors
 import re
@@ -220,6 +220,20 @@ def logout():
     return redirect(url_for('home'))
 
 
+@app.route('/sample_declaration_court')
+def sample_declaration_court():
+    return send_from_directory('C:\\Users\\Acer\\консультант\\bankruptcy\\static\\docs', 'sample_declaration_court.docx', as_attachment=False)
+
+
+@app.route('/sample_declaration_out_of_court')
+def sample_declaration_out_of_court():
+    return send_from_directory('C:\\Users\\Acer\\консультант\\bankruptcy\\static\\docs', 'sample_declaration_out_of_court.docx', as_attachment=False)
+
+@app.route('/creditors')
+def creditors():
+    return send_from_directory('C:\\Users\\Acer\\консультант\\bankruptcy\\static\\docs', 'creditors.docx', as_attachment=False)
+
+
 if __name__ == "__main__":
-    # app.run(debug=True)
-    app.run(debug=False, port=80, host='0.0.0.0')
+    app.run(debug=True)
+    # app.run(debug=False, port=80, host='0.0.0.0')
