@@ -187,25 +187,22 @@ def sign_in():
 @app.route('/sign-up', methods=['GET', 'POST'])
 def sign_up():
     msg = ''
-    if request.method == 'POST' and 'username' in request.form and 'password' in request.form and 'phone' in request.form:
+    if request.method == 'POST' and 'username' in request.form and 'password' in request.form:
         username = request.form['username']
         hashed_password = hashlib.sha256(request.form['password'].encode('utf-8')).hexdigest()
-        phone = request.form['phone']
 
         cursor = mysql.connection.cursor(MySQLdb.cursors.DictCursor)
         cursor.execute('SELECT * FROM form WHERE username = %s', (username,))
         account = cursor.fetchone()
         if account:
             msg = 'Такой аккаунт уже существует'
-        elif not re.match(r'(\+7|8)\d{10}', phone):
-            msg = 'Введите корректный номер телефона!'
-        elif not re.match(r'[A-Za-z0-9]+', username):
-            msg = 'Логин может содержать только буквы и цифры!'
-        elif not username or not hashed_password or not phone:
+        elif not re.match(r'\w+\@\w+.\w{1,3}', username):
+            msg = 'Введите корректный адрес электронной почты!'
+        elif not username or not hashed_password:
             msg = 'Поля должны быть заполнены!'
         else:
-            cursor.execute('INSERT INTO form (`username`, `password`, `phone`) VALUES (%s, %s, %s)',
-                           (username, hashed_password, phone,))
+            cursor.execute('INSERT INTO form (`username`, `password`) VALUES (%s, %s)',
+                           (username, hashed_password,))
             mysql.connection.commit()
             msg = 'Регистрация прошла успешно!'
             return redirect(url_for('home'))
@@ -222,18 +219,18 @@ def logout():
 
 @app.route('/sample_declaration_court')
 def sample_declaration_court():
-    return send_from_directory('C:\\Users\\Acer\\консультант\\bankruptcy\\static\\docs', 'sample_declaration_court.docx', as_attachment=False)
+    return send_from_directory('C:\\uni2023-24\\KP\\git\\static\\docs', 'sample_declaration_court.docx', as_attachment=False)
 
 
 @app.route('/sample_declaration_out_of_court')
 def sample_declaration_out_of_court():
-    return send_from_directory('C:\\Users\\Acer\\консультант\\bankruptcy\\static\\docs', 'sample_declaration_out_of_court.docx', as_attachment=False)
+    return send_from_directory('C:\\uni2023-24\\KP\\git\\static\\docs', 'sample_declaration_out_of_court.docx', as_attachment=False)
 
 @app.route('/creditors')
 def creditors():
-    return send_from_directory('C:\\Users\\Acer\\консультант\\bankruptcy\\static\\docs', 'creditors.docx', as_attachment=False)
+    return send_from_directory('C:\\uni2023-24\\KP\\git\\static\\docs', 'creditors.docx', as_attachment=False)
 
 
 if __name__ == "__main__":
-    # app.run(debug=True)
+    #app.run(debug=True)
     app.run(debug=False, port=80, host='0.0.0.0')

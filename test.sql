@@ -5,7 +5,6 @@ CREATE TABLE IF NOT EXISTS `form` (
     `id` int(11) NOT NULL AUTO_INCREMENT,
     `username` varchar(50) NOT NULL,
     `password` varchar(255) NOT NULL,
-    `phone` varchar(12) NOT NULL,
     PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
 
@@ -19,7 +18,7 @@ CREATE TABLE IF NOT EXISTS `result` (
     `answer` varchar(25),
     PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
-
+-- drop table `form`;
 CREATE TABLE IF NOT EXISTS `questions` (
     `id` int(11) NOT NULL AUTO_INCREMENT,
     `qid` varchar(50) not null,
