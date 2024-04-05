@@ -59,24 +59,30 @@ def form():
         user_id = session.get('id')  
         res = results[int(session['history'][-2])]
         cursor = mysql.connection.cursor()
+        cursor.execute('SELECT session FROM sessions')
+        session_num = cursor.fetchone()
+        print(session_num[0])
         cursor.execute('UPDATE sessions SET session = session + 1 \
                        WHERE uid = %s', (user_id,))
         mysql.connection.commit()
         cursor.close()
         print(res)
-        return render_template('form.html', question=question, res=res)
+        saved = get_saved_answers_from_database_form(session_num[0])
+        print(saved)
+        return render_template('form.html', question=question, res=res, saved=saved)
     return render_template('form.html', question=question)
-
 
 
 def save_answers_to_database(q_id, answer):
     try:
         user_id = session.get('id')  
+        print(user_id)
+        if user_id == None:
+            user_id = 0
         cursor = mysql.connection.cursor()
         cursor.execute('INSERT INTO sessions (uid, session) \
                         SELECT %s, %s \
                         WHERE NOT EXISTS (SELECT * FROM sessions WHERE uid = %s);', (user_id, 1, user_id, ))
-        print('here')
         mysql.connection.commit()
         session_number = cursor.fetchone()
         cursor.close()
@@ -91,6 +97,26 @@ def save_answers_to_database(q_id, answer):
     except Exception as e:
         app.logger.error(f"Failed to save answers to database: {e}")
 
+
+def get_saved_answers_from_database_form(session_num):
+    try:
+        cursor = mysql.connection.cursor()
+        user_id = session.get('id')
+        if user_id == None:
+            user_id = 0
+        cursor.execute('SELECT DISTINCT questions.question, text \
+                       FROM questions JOIN result ON questions.qid = result.qid \
+                       JOIN answers ON result.answer = answers.aid\
+                       WHERE result.uid = %s AND result.session = %s', (user_id, session_num, ))
+        saved_answers = cursor.fetchall()
+        #if user_id == 0:
+        #    cursor.execute('DELETE FROM result WHERE uid = 0')
+        #    mysql.connection.commit()
+        cursor.close() 
+        return saved_answers
+    except Exception as e:
+        app.logger.error(f"Failed to get saved answers from database: {e}")
+        return []
 
 @app.route('/back', methods=['GET'])
 def back():
