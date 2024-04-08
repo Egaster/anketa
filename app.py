@@ -54,7 +54,20 @@ def form():
 
     question_id = int(session['history'][-1])
     question = questions[question_id]
+    if question_id == 1:
+        cursor = mysql.connection.cursor()
+        user_id = session.get('id')  
+        if user_id == None:
+            user_id = 0
+        cursor.execute('INSERT INTO sessions (uid, session) \
+                        SELECT %s, %s \
+                        WHERE NOT EXISTS (SELECT * FROM sessions WHERE uid = %s);', (user_id, 0, user_id, ))
+        cursor.execute('UPDATE sessions SET session = session + 1 \
+                       WHERE uid = %s', (user_id,))
+        mysql.connection.commit()
+        cursor.close()
     if question_id < 0:
+        print(session['answers'])
         user_id = session.get('id')  
         if question_id == -2:
             res = html_for_court(session['answers'])
@@ -62,21 +75,20 @@ def form():
         else:
             res = results[int(session['history'][-2])]
         cursor = mysql.connection.cursor()
-        print(user_id)
+        #print(user_id)
         cursor.execute('SELECT session FROM sessions WHERE uid = %s', (user_id,))
         session_num = cursor.fetchone()
-        print(session_num)
-        cursor.execute('UPDATE sessions SET session = session + 1 \
-                       WHERE uid = %s', (user_id,))
+        #print(session_num)
+        #cursor.execute('UPDATE sessions SET session = session + 1 \
+                    #   WHERE uid = %s', (user_id,))
         cursor.execute('DELETE FROM result WHERE id NOT IN (\
                         SELECT MAX(id)\
                         FROM (select * from result) as res \
                         GROUP BY qid, session)')
         mysql.connection.commit()
         cursor.close()
-        print(res)
         saved = get_saved_answers_from_database_form(session_num[0])
-        print(saved)
+        #print(saved)
         
         return render_template('form.html', question=question, res=res, saved=saved)
     return render_template('form.html', question=question)
@@ -176,8 +188,9 @@ def profile():
     cursor.close() 
     if num_of_sessions != ():
         for i in range(1, num_of_sessions[0][0]):
-            saved.append(get_saved_answers_from_database(i))
-        return render_template('profile.html', session_data=dict(zip(saved, [x for x in range(1,num_of_sessions[0][0])])))  # Личный кабинет с прошлыми результатами анкеты  # Личный кабинет с прошлыми результатами анкеты
+            if get_saved_answers_from_database(i) != ():
+                saved.append(get_saved_answers_from_database(i))
+        return render_template('profile.html', session_data=dict(zip([x for x in range(1,len(saved)+1)],saved)))  # Личный кабинет с прошлыми результатами анкеты  # Личный кабинет с прошлыми результатами анкеты
     return render_template('profile.html')
 
 def get_saved_answers_from_database(session_num):
