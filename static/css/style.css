@@ -17,7 +17,7 @@ h1, h2, h3, h4, h5, h6 {
     margin: 0px;
 }
 
-input[type="button"] {
+input[type="submit"] {
     margin-top: 4px;
     font-size: 13px;
     padding: 5px;
