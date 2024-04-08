@@ -137,7 +137,7 @@ align-items: center;
 /*nav*/
 
 .nav {
-    font-size: 13px;
+    font-size: 16px;
     text-transform: uppercase;
     color: #715902;
 }
@@ -192,6 +192,13 @@ align-items: center;
     color: rgb(124, 108, 108);
     text-transform: none;
     transition: color .3s linear;
+}
+
+.autorization__home{
+    clear:both; 
+    text-align:right;
+    z-index: 2;
+    font-size: 14px;
 }
 
 /* Button 1 */
@@ -259,7 +266,6 @@ align-items: center;
     position: relative;
 
     border-top: 3px solid #fff;
-    border-bottom: 3px solid #fff;
     opacity: .7;
 
     font-size: 18px;

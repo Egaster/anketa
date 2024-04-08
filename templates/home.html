@@ -27,15 +27,13 @@
                         <a class="link" href="/judicial_bankruptcy">Судебное банкротство</a>                          
                         <a class="link" href="/out-of-court_bankruptcy">Внесудебное банкротство</a>
                     </nav>
-                    <div>
-                        {% if 'loggedin' in session %}
+                    <div class="autorization__home">
+                        {% if 'loggedin' in session %} 
+                        <a class="link_auto" href="/logout" method="post">Выйти</a>
                         <a class="link_auto" href="/profile">Профиль</a>
-                        <form action="/logout" method="post">
-                            <input class="link_auto" type="submit" value="Выйти">
-                        </form>
                         {% else %}
                         <a class="link_auto" href="/sign-in">Войти</a>
-                        {% endif %}
+                        {% endif %} 
                     </div>
                 </div>
             </div>
