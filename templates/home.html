@@ -29,7 +29,7 @@
                     </nav>
                     <div class="autorization__home">
                         {% if 'loggedin' in session %} 
-                        <a class="link_auto" href="/logout" method="post">Выйти</a>
+                        <a href="/logout" onclick="document.forms[0].submit(); return false;">Выйти</a>
                         <a class="link_auto" href="/profile">Профиль</a>
                         {% else %}
                         <a class="link_auto" href="/sign-in">Войти</a>

@@ -32,7 +32,8 @@
                     <div>
                       {% if 'loggedin' in session %}
                         <a class="link_auto" href="/profile" target="_blank">Профиль</a>
-                        <form action="/logout" method="post">                              <input class="link_auto" type="submit" value="Выйти">
+                        <form action="/logout" method="post">    
+                            <input class="link_auto" type="submit" value="Выйти">
                         </form>
                         {% else %}
                         <a class="link_auto" href="/sign-in" target="_blank">Войти</a>
