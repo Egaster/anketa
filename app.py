@@ -245,16 +245,16 @@ def logout():
 
 @app.route('/sample_declaration_court')
 def sample_declaration_court():
-    return send_from_directory('C:\\uni2023-24\\KP\\git\\static\\docs', 'sample_declaration_court.docx', as_attachment=False)
+    return send_from_directory('\\home\\user\\bankruptcy\\static\\docs', 'sample_declaration_court.docx', as_attachment=False)
 
 
 @app.route('/sample_declaration_out_of_court')
 def sample_declaration_out_of_court():
-    return send_from_directory('C:\\uni2023-24\\KP\\git\\static\\docs', 'sample_declaration_out_of_court.docx', as_attachment=False)
+    return send_from_directory('\\home\\user\\bankruptcy\\static\\docs', 'sample_declaration_out_of_court.docx', as_attachment=False)
 
 @app.route('/creditors')
 def creditors():
-    return send_from_directory('C:\\uni2023-24\\KP\\git\\static\\docs', 'creditors.docx', as_attachment=False)
+    return send_from_directory('\\home\\user\\bankruptcy\\static\\docs', 'creditors.docx', as_attachment=False)
 
 
 if __name__ == "__main__":
