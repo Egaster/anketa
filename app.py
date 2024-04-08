@@ -58,6 +58,7 @@ def form():
         user_id = session.get('id')  
         if question_id == -2:
             res = html_for_court(session['answers'])
+            logging.debug(session['answers'])
         else:
             res = results[int(session['history'][-2])]
         cursor = mysql.connection.cursor()
