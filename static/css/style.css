@@ -18,14 +18,14 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 input[type="submit"] {
-    margin-top: 4px;
+    margin-top: 3px;
     font-size: 13px;
     padding: 5px;
     color: #fff;
     background-color: rgb(124, 108, 108);
     cursor: pointer;
     border: none;
-    border-radius: 6px; 
+    border-radius: 5px; 
   }
 
 
