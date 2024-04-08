@@ -462,6 +462,16 @@ align-items: center;
     justify-content: space-between;
 }
 
+ol.with-parentheses {
+    counter-reset: myCounter;
+    list-style: none;
+}
+
+ol.with-parentheses > li::before {
+    content: counter( myCounter ) ') ';
+    counter-increment: myCounter;
+}
+
 /* Card */
 .card {
     margin-top: 70px;
