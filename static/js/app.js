@@ -12,14 +12,19 @@ $(function(){
     });
 
     /*Collapse*/
-    $("[data-collapse]").on("click", function(event) {
-        event.preventDefault();
-
-        var $this = $(this),
-            blockId = $this.data('collaps');
-        
-        $this.toggleClass("active");
-    });
+    // $("[data-collapse]").on("click", function(event) {
+    //     event.preventDefault();
     
+    //     var $this = $(this),
+    //         blockId = $this.data('collaps');
+        
+    //     $this.toggleClass("active");
+        
+    //     if ($this.hasClass("active")) {
+    //         $(blockId).slideDown();
+    //     } else {
+    //         $(blockId).slideUp();
+    //     }
+    // });
 });
 
