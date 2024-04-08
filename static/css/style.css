@@ -17,6 +17,17 @@ h1, h2, h3, h4, h5, h6 {
     margin: 0px;
 }
 
+input[type="button"] {
+    margin-top: 4px;
+    font-size: 13px;
+    padding: 5px;
+    color: #fff;
+    background-color: rgb(124, 108, 108);
+    cursor: pointer;
+    border: none;
+    border-radius: 6px; 
+  }
+
 
 /* Container */
 .container {
