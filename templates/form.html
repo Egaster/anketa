@@ -98,7 +98,7 @@
                         {% elif  question.id == -2 %}
                             <h1 class="question" id="question{{ question.id }}">У Вас есть возможность пройти процедуру судебного банкротства.</h1>
                             <div class="card__group"> <div>{{ res.text|safe }}</div></div>
-                            <div class="card__group"> <div>Подробнее про процедуру внесудебного банкротства Вы можете узнать по <a href ="/judicial_bankruptcy" target="_blank"> ссылке</a>.</div></div>
+                            <div class="card__group"> <div>Подробнее про процедуру судебного банкротства Вы можете узнать по <a href ="/judicial_bankruptcy" target="_blank"> ссылке</a>.</div></div>
                         {% endif %}
                         <br>
                         <a class="button2" href="{{ url_for('back') }}">Назад</a>
