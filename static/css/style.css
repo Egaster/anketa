@@ -192,6 +192,7 @@ align-items: center;
     color: rgb(124, 108, 108);
     text-transform: none;
     transition: color .3s linear;
+    cursor: pointer;
 }
 
 .autorization__home{

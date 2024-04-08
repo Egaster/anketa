@@ -28,12 +28,14 @@
                         <a class="link" href="/out-of-court_bankruptcy">Внесудебное банкротство</a>
                     </nav>
                     <div class="autorization__home">
-                        {% if 'loggedin' in session %} 
-                        <a class="link_auto" href="/logout" onclick="document.forms[0].submit(); return false;">Выйти</a>
-                        <a class="link_auto" href="/profile">Профиль</a>
-                        {% else %}
-                        <a class="link_auto" href="/sign-in">Войти</a>
-                        {% endif %} 
+                        <!-- {% if 'loggedin' in session %} -->
+                        <a class="link_auto" href="/profile" target="_blank">Профиль</a>
+                        <form action="/logout" method="post">    
+                            <a class="link_auto">Выйти</a>
+                        </form>
+                        <!-- {% else %}
+                        <a class="link_auto" href="/sign-in" target="_blank">Войти</a>
+                        {% endif %} -->
                     </div>
                 </div>
             </div>
