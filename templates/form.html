@@ -22,20 +22,20 @@
             <div class="container">
                 <div class="header__inner">
                     <div class="logo">
-                        <a class="logo_link" href="../" data-scroll="#main">Банкрот-эксперт</a>
+                        <a class="logo_link" href="../" target="_blank" data-scroll="#main">Банкрот-эксперт</a>
                     </div>
                     <nav class="nav">
-                        <a class="link" href="/need">Нужно ли банкротиться?</a>
-                        <a class="link" href="/judicial_bankruptcy">Судебное банкротство</a>
-                        <a class="link" href="/out-of-court_bankruptcy">Внесудебное банкротство</a>
+                        <a class="link" href="/need" target="_blank">Нужно ли банкротиться?</a>
+                        <a class="link" href="/judicial_bankruptcy" target="_blank">Судебное банкротство</a>
+                        <a class="link" href="/out-of-court_bankruptcy" target="_blank">Внесудебное банкротство</a>
                     </nav>
                     <div>
                       {% if 'loggedin' in session %}
-                        <a class="link_auto" href="/profile">Профиль</a>
+                        <a class="link_auto" href="/profile" target="_blank">Профиль</a>
                         <form action="/logout" method="post">                              <input class="link_auto" type="submit" value="Выйти">
                         </form>
                         {% else %}
-                        <a class="link_auto" href="/sign-in">Войти</a>
+                        <a class="link_auto" href="/sign-in" target="_blank">Войти</a>
                         {% endif %}
                     </div>
                 </div>
@@ -89,7 +89,7 @@
                     {% else %}
                         {% if question.id == -1%}
                             <h1 class="question" id="question{{ question.id }}">Банкротство вам не подходит. Почему?</h1>
-                            <div class="card__group"> {{res.text|safe}}</div>
+                            <div class="card__group"><div> {{res.text|safe}}</div></div>
                         {% elif  question.id == -3 %}
                             <h1 class="question" id="question{{ question.id }}">У Вас есть возможность пройти процедуру внесудебного банкротства.</h1>
                             <div class="card__group"> {{ res.text|safe }}</div>
