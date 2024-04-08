@@ -61,3 +61,16 @@
     display: flex;
     justify-content: space-between;
 }
+
+.button2 {
+    margin-top: 20px;
+    font-size: 15px;
+    color: #fff;
+    background-color: rgb(124, 108, 108);
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    text-decoration: none;
+    transition: background-color .3s linear;
+}
