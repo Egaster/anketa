@@ -59,11 +59,16 @@ def form():
         user_id = session.get('id')  
         res = results[int(session['history'][-2])]
         cursor = mysql.connection.cursor()
-        cursor.execute('SELECT session FROM sessions')
+        print(user_id)
+        cursor.execute('SELECT session FROM sessions WHERE uid = %s', (user_id,))
         session_num = cursor.fetchone()
-        print(session_num[0])
+        print(session_num)
         cursor.execute('UPDATE sessions SET session = session + 1 \
                        WHERE uid = %s', (user_id,))
+        cursor.execute('DELETE FROM result WHERE id NOT IN (\
+                        SELECT MAX(id)\
+                        FROM (select * from result) as res \
+                        GROUP BY qid, session)')
         mysql.connection.commit()
         cursor.close()
         print(res)
@@ -109,9 +114,9 @@ def get_saved_answers_from_database_form(session_num):
                        JOIN answers ON result.answer = answers.aid\
                        WHERE result.uid = %s AND result.session = %s', (user_id, session_num, ))
         saved_answers = cursor.fetchall()
-        #if user_id == 0:
-        #    cursor.execute('DELETE FROM result WHERE uid = 0')
-        #    mysql.connection.commit()
+        if user_id == 0:
+            cursor.execute('DELETE FROM result WHERE uid = 0')
+            mysql.connection.commit()
         cursor.close() 
         return saved_answers
     except Exception as e:
@@ -258,5 +263,5 @@ def creditors():
 
 
 if __name__ == "__main__":
-    # app.run(debug=True)
-    app.run(debug=False, port=80, host='0.0.0.0')
+    app.run(debug=True)
+    #app.run(debug=False, port=80, host='0.0.0.0')
