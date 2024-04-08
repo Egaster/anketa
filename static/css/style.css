@@ -311,6 +311,7 @@ align-items: center;
 
 /* Section */
 .section {
+    height: 500px;
     padding: 45px 0;
     background-color: rgba(247, 239, 239, 0.76);
 }
@@ -763,7 +764,7 @@ ul {
 }
 
 .small__section{
-    height: 170px;
+    height: 160px;
     border-top:2px solid rgb(42, 40, 40);
 }
 
@@ -776,6 +777,11 @@ ul {
 
 .small__text{
     font-size: 15px;    
+}
+
+.small__text__form{
+    margin-top: 10px;
+    font-size: 15px;
 }
 
 .small__size{
