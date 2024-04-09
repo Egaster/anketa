@@ -316,6 +316,10 @@ align-items: center;
     background-color: rgba(247, 239, 239, 0.76);
 }
 
+.section__bankruptcy{
+    padding: 38px 0;
+    background-color: rgba(247, 239, 239, 0.76);
+}
 .section__green {
     padding: 60px 0;
     background-color: #f5fff6;
