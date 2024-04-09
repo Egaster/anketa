@@ -59,6 +59,8 @@ def form():
         user_id = session.get('id')  
         if user_id == None:
             user_id = 0
+            cursor.execute('DELETE FROM result WHERE uid = 0')
+            mysql.connection.commit()
         cursor.execute('INSERT INTO sessions (uid, session) \
                         SELECT %s, %s \
                         WHERE NOT EXISTS (SELECT * FROM sessions WHERE uid = %s);', (user_id, 0, user_id, ))
@@ -100,9 +102,9 @@ def save_answers_to_database(q_id, answer):
     try:
         user_id = session.get('id')  
         print(user_id)
+        cursor = mysql.connection.cursor()
         if user_id == None:
             user_id = 0
-        cursor = mysql.connection.cursor()
         cursor.execute('INSERT INTO sessions (uid, session) \
                         SELECT %s, %s \
                         WHERE NOT EXISTS (SELECT * FROM sessions WHERE uid = %s);', (user_id, 1, user_id, ))
@@ -132,9 +134,9 @@ def get_saved_answers_from_database_form(session_num):
                        JOIN answers ON result.answer = answers.aid\
                        WHERE result.uid = %s AND result.session = %s', (user_id, session_num, ))
         saved_answers = cursor.fetchall()
-        if user_id == 0:
-            cursor.execute('DELETE FROM result WHERE uid = 0')
-            mysql.connection.commit()
+        #if user_id == 0:
+           # cursor.execute('DELETE FROM result WHERE uid = 0')
+           # mysql.connection.commit()
         cursor.close() 
         return saved_answers
     except Exception as e:
