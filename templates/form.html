@@ -63,7 +63,7 @@
                         </h1>     
                         {% if question.id != 9 %}     
                             <div class="answer-group">
-                                <input class="answer" type="radio" id="yes" name="next" value="{{ question.next.yes }}">
+                                <input class="answer" type="radio" id="yes" name="next" value="{{ question.next.yes + 100 }}">
                                 <label for="yes">Да</label>
                             </div>
                         {% endif %}
@@ -109,6 +109,7 @@
                             {{q.0}} {{q.1}}
                             </form>
                         {% endfor %}
+                        <!-- {{answers}} -->
                     {% endif %}
                 </form>
             </div>
