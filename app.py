@@ -67,8 +67,10 @@ def form():
         mysql.connection.commit()
         cursor.close()
     if question_id < 0:
-        print(session['answers'])
-        user_id = session.get('id')  
+        print(session['history'])
+        user_id = session.get('id') 
+        if user_id == None:
+            user_id = 0 
         if question_id == -2:
             res = html_for_court(session['answers'])
             logging.debug(session['answers'])
@@ -78,7 +80,7 @@ def form():
         #print(user_id)
         cursor.execute('SELECT session FROM sessions WHERE uid = %s', (user_id,))
         session_num = cursor.fetchone()
-        #print(session_num)
+        print(session_num)
         #cursor.execute('UPDATE sessions SET session = session + 1 \
                     #   WHERE uid = %s', (user_id,))
         cursor.execute('DELETE FROM result WHERE id NOT IN (\
@@ -195,8 +197,8 @@ def profile():
 
 def get_saved_answers_from_database(session_num):
     try:
-        cursor = mysql.connection.cursor()
         user_id = session.get('id')
+        cursor = mysql.connection.cursor()
         cursor.execute('SELECT DISTINCT questions.question, text \
                        FROM questions JOIN result ON questions.qid = result.qid \
                        JOIN answers ON result.answer = answers.aid\
