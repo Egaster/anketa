@@ -279,7 +279,7 @@ align-items: center;
 
     border-top: 3px solid #fff;
     opacity: .7;
-
+    border-bottom: 3px solid #fff;
     font-size: 18px;
     color: #fff;
     text-transform: uppercase;
@@ -659,7 +659,7 @@ ol.with-parentheses > li::before {
     right: 18px;
   }
   
-  .active::after {
+  .accordion__header.active::after {
     content: '\25B4'; /* код символа для стрелочки вверх */
     
   }
