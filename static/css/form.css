@@ -75,3 +75,9 @@
     text-decoration: none;
     transition: background-color .3s linear;
 }
+
+.container_for_answer{
+    width: 80%;
+    margin: 20px auto;
+    padding: 20px;
+}

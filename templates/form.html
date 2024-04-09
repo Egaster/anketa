@@ -104,12 +104,23 @@
                         <a class="button2" href="{{ url_for('back') }}">Назад</a>
                         </form>
 
-                        {% for q in saved %}
+                        <!-- {% for q in saved %}
                             <form class='form' method="POST">
                             {{q.0}} {{q.1}}
                             </form>
-                        {% endfor %}
-                        <!-- {{answers}} -->
+                        {% endfor %} -->
+                            <div class="container_for_answer">
+                                <div class="wedo"> 
+                                    <button class="accordion__header">Ваши ответы</button>
+                                    <div class="accordion__content">
+                                        {% for q in saved %}
+                                        <form class='form' method="POST">
+                                        {{q.0}} {{q.1}}
+                                        </form>
+                                        {% endfor %}
+                                    </div>
+                                </div> 
+                            </div>
                     {% endif %}
                 </form>
             </div>
@@ -138,4 +149,27 @@
             
         });
     </script>
+    <script>
+        var accordions = document.getElementsByClassName("accordion__header");
+
+        for (var i = 0; i < accordions.length; i++) {
+            accordions[i].addEventListener("click", function() {
+                this.classList.toggle("active");
+                var accordion__content = this.nextElementSibling;
+                if (accordion__content.style.maxHeight) {
+                    accordion__content.style.maxHeight = null;
+                    accordion__content.style.border = "none";
+                    } else {
+                    accordion__content.style.maxHeight = accordion__content.scrollHeight + "px";
+                    accordion__content.style.border = "2px solid #1b1818";
+                }
+                if (accordion__content.classList.contains("accordion__content")) {
+                    accordion__content.classList.toggle("active");
+}
+            });
+        }
+    </script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js">
+    </script>
+    <script src="../static/js/app.js"></script>
 </html>
