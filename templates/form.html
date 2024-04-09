@@ -22,7 +22,7 @@
             <div class="container">
                 <div class="header__inner">
                     <div class="logo">
-                        <a class="logo_link" href="../" target="_blank" data-scroll="#main">Банкрот-эксперт</a>
+                        <a class="logo_link" href="../" target="_blank">Банкрот-эксперт</a>
                     </div>
                     <nav class="nav">
                         <a class="link" href="/need" target="_blank">Нужно ли банкротиться?</a>
@@ -102,13 +102,9 @@
                         {% endif %}
                         <br>
                         <a class="button2" href="{{ url_for('back') }}">Назад</a>
-                        </form>
-
-                        <!-- {% for q in saved %}
-                            <form class='form' method="POST">
-                            {{q.0}} {{q.1}}
-                            </form>
-                        {% endfor %} -->
+                </form>
+                    {% endif %}
+                    {% if question.id < 0 %}
                             <div class="container_for_answer">
                                 <div class="wedo"> 
                                     <button class="accordion__header">Ваши ответы</button>
@@ -122,7 +118,6 @@
                                 </div> 
                             </div>
                     {% endif %}
-                </form>
             </div>
         </section>
 
