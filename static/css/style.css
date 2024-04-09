@@ -311,7 +311,7 @@ align-items: center;
 
 /* Section */
 .section {
-    height: 500px;
+    min-height: 505px;
     padding: 45px 0;
     background-color: rgba(247, 239, 239, 0.76);
 }
