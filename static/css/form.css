@@ -79,6 +79,4 @@
 .container_for_answer{
     width: 80%;
     margin: 20px auto;
-    border: 2px solid rgb(60, 57, 57);
-    border-radius: 5px;
 }
