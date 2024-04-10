@@ -7,6 +7,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no, target-densityDpi=device-dpi" />
     <!--Привязка css-->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../static/css/form.css">
     <link rel="stylesheet" href="../static/css/style.css">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap" rel="stylesheet">
     <script src="https://kit.fontawesome.com/c3770d0828.js" crossorigin="anonymous"></script>
@@ -33,17 +35,23 @@
       </div>
   </header>
     <section class="section">
+      <div class="container__section">
       <h1>Результаты анкет</h1>
-      <div>
-        {% for num, qa in session_data.items() %}
-        <h3>Сессия {{num}}</h3>
-        {% for q in qa %}
-        <form class='form' method="POST">
-          {{q.0}} {{q.1}}
-        </form>
-        {% endfor %}
-        {% endfor %}
-      </div>
+        <div class="container_for_answer">
+          <div class="wedo"> 
+              {% for num, qa in session_data %}
+              <button class="accordion__header">Сессия {{num}}</button>
+              <div class="accordion__content">
+                {% for q in qa %}
+                <form class='form' method="POST">
+                  {{q.0}} {{q.1}}
+                </form>
+                {% endfor %}
+              </div>
+              {% endfor %}    
+          </div> 
+        </div>  
+      </div> 
     </section>
     <footer class="small__section" id="contacts">
       <div class="container">
@@ -56,6 +64,29 @@
           <div class="small__text">Администрация сайта не несет ответственности за дальнейшие действия пользователя, основанные на полученных данных.</div>
       </div>
   </footer>
+  <script>
+    var accordions = document.getElementsByClassName("accordion__header");
+
+    for (var i = 0; i < accordions.length; i++) {
+        accordions[i].addEventListener("click", function() {
+            this.classList.toggle("active");
+            var accordion__content = this.nextElementSibling;
+            if (accordion__content.style.maxHeight) {
+                accordion__content.style.maxHeight = null;
+                accordion__content.style.border = "none";
+                } else {
+                accordion__content.style.maxHeight = accordion__content.scrollHeight + "px";
+                accordion__content.style.border = "2px solid #1b1818";
+            }
+            if (accordion__content.classList.contains("accordion__content")) {
+                accordion__content.classList.toggle("active");
+          }
+        });
+    }
+  </script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js">
+  </script>
+  <script src="../static/js/app.js"></script>
   </body>
 </html>
 

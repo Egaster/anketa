@@ -5,6 +5,7 @@ import re
 import hashlib
 import json
 import logging
+from datetime import datetime
 
 app = Flask(__name__)
 app.secret_key = ' key'
@@ -25,7 +26,7 @@ with open('results.json', 'r', encoding='utf8') as f:
     data = json.load(f)
 results = {r['id']: r for r in data['Results']}
 
-
+current_datetime = ''
 @app.route('/form', methods=['GET', 'POST'])
 def form():
     if 'history' not in session:
@@ -57,6 +58,8 @@ def form():
     question_id = int(session['history'][-1])
     question = questions[question_id]
     if question_id == 1:
+        current_datetime = datetime.now().strftime('%d-%m-%Y %H:%M')
+        print(current_datetime)
         cursor = mysql.connection.cursor()
         user_id = session.get('id')  
         if user_id == None:
@@ -84,8 +87,9 @@ def form():
         cursor.execute('SELECT session FROM sessions WHERE uid = %s', (user_id,))
         session_num = cursor.fetchone()
         print(session_num)
-        #cursor.execute('UPDATE sessions SET session = session + 1 \
-                    #   WHERE uid = %s', (user_id,))
+        current_datetime = datetime.now().strftime('%d-%m-%Y %H:%M')
+        cursor.execute('UPDATE result SET date = %s \
+                       WHERE session = %s', (current_datetime, session_num[0],))
         cursor.execute('DELETE FROM result WHERE id NOT IN (\
                         SELECT MAX(id)\
                         FROM (select * from result) as res \
@@ -191,11 +195,13 @@ def profile():
     num_of_sessions = cursor.fetchall()
     print(num_of_sessions)
     cursor.close() 
+    date_array = []
     if num_of_sessions != ():
-        for i in range(1, num_of_sessions[0][0]):
-            if get_saved_answers_from_database(i) != ():
-                saved.append(get_saved_answers_from_database(i))
-        return render_template('profile.html', session_data=dict(zip([x for x in range(1,len(saved)+1)],saved)))  # Личный кабинет с прошлыми результатами анкеты  # Личный кабинет с прошлыми результатами анкеты
+        for i in range(1, num_of_sessions[0][0] + 1):
+            if get_saved_answers_from_database(i)[0] != ():
+                saved.append(get_saved_answers_from_database(i)[0])
+                date_array.append(get_saved_answers_from_database(i)[1][0][0][:-6])
+        return render_template('profile.html', session_data=(zip(date_array,saved)))  # Личный кабинет с прошлыми результатами анкеты  # Личный кабинет с прошлыми результатами анкеты
     return render_template('profile.html')
 
 def get_saved_answers_from_database(session_num):
@@ -207,8 +213,10 @@ def get_saved_answers_from_database(session_num):
                        JOIN answers ON result.answer = answers.aid\
                        WHERE result.uid = %s AND result.session = %s', (user_id, session_num, ))
         saved_answers = cursor.fetchall()
+        cursor.execute('SELECT DISTINCT date FROM result WHERE uid = %s AND session = %s', (user_id, session_num, ))
+        date = cursor.fetchall()
         cursor.close() 
-        return saved_answers
+        return [saved_answers,date]
     except Exception as e:
         app.logger.error(f"Failed to get saved answers from database: {e}")
         return []

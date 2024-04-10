@@ -16,6 +16,7 @@ CREATE TABLE IF NOT EXISTS `result` (
     `uid` varchar(50) NOT NULL,
     `qid` varchar(50) NOT NULL,
     `answer` varchar(25),
+    `date` VARCHAR(25),
     PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
 -- drop table `form`;
