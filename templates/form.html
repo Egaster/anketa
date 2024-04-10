@@ -22,21 +22,21 @@
             <div class="container">
                 <div class="header__inner">
                     <div class="logo">
-                        <a class="logo_link" href="../" target="_blank">Банкрот-эксперт</a>
+                        <div class="logo_link" href="../" target="_blank">Банкрот-эксперт</div>
                     </div>
                     <nav class="nav">
-                        <a class="link" href="/need" target="_blank">Нужно ли банкротиться?</a>
-                        <a class="link" href="/judicial_bankruptcy" target="_blank">Судебное банкротство</a>
-                        <a class="link" href="/out-of-court_bankruptcy" target="_blank">Внесудебное банкротство</a>
+                        <div class="link" href="/need" target="_blank">Нужно ли банкротиться?</div>
+                        <div class="link" href="/judicial_bankruptcy" target="_blank">Судебное банкротство</div>
+                        <div class="link" href="/out-of-court_bankruptcy" target="_blank">Внесудебное банкротство</div>
                     </nav>
                     <div>
                       {% if 'loggedin' in session %}
-                        <a class="link_auto" href="/profile" target="_blank">Профиль</a>
+                        <div class="link_auto" href="/profile" target="_blank">Профиль</div>
                         <form action="/logout" method="post">    
                             <input class="link_auto" type="submit" value="Выйти">
                         </form>
                         {% else %}
-                        <a class="link_auto" href="/sign-in" target="_blank">Войти</a>
+                        <div class="link_auto" href="/sign-in" target="_blank">Войти</div>
                         {% endif %}
                     </div>
                 </div>
@@ -121,16 +121,21 @@
             </div>
         </section>
 
-        <footer class="small__section" id="contacts">
+        <div class="small__section" id="contacts">
             <div class="container">
                 <div class="small__inner">
-                    <div class="small__text">                     
-                        <a class="logo_link" href="../" data-scroll="#main"><h2>Банкрот-эксперт</h2></a>
+                    <div class="small__text">         
+                        <style>
+                            a {
+                             text-decoration: none; /* Убираем подчёркивание */
+                            }
+                           </style>            
+                        <div class="logo_link" href="../" data-scroll="#main"><h2>Банкрот-эксперт</h2></div>
                     </div>
                 </div>
                 <div class="small__text__form">Администрация сайта не несет ответственности за дальнейшие действия пользователя, основанные на полученных данных.</div>
             </div>
-        </footer> <!--MAKED-->
+        </div> <!--MAKED-->
     </body>
 
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
