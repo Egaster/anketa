@@ -100,6 +100,13 @@
                             <div class="card__group"> <div>{{ res.text|safe }}</div></div>
                             <div class="card__group"> <div>Подробнее про процедуру судебного банкротства Вы можете узнать по <a href ="/judicial_bankruptcy" target="_blank"> ссылке</a>.</div></div>
                         {% endif %}
+                        <div>
+                            {% if 'loggedin' in session %}
+                                <p>Вы можете скачать необходимые документы, а также посмотреть результаты этой и ранее пройденных анкет в <a href="/profile">профиле.</a></p>
+                            {% else %}
+                                <p><a href="/sign_in">Авторизируйтесь</a>, чтобы получить возможность скачать необходимые документы, а также посмотреть результаты анкет в профиле.</p>
+                            {% endif %}
+                        </div>
                         <br>
                         <a class="button2" href="{{ url_for('back') }}">Назад</a>
                         </form>
