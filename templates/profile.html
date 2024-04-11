@@ -36,8 +36,18 @@
   </header>
     <section class="section">
       <div class="container__section">
-      <h1>Результаты анкет</h1>
-        <div class="container_for_answer">
+        <h2>Формы заявлений</h2>
+        <ul>
+          <li><a href="/sample_declaration_court" target="_blank">Заявление о признании банкротом гражданина, не обладающего статусом индивидуального предпринимателя
+          </a></li>
+          <li><a href="/sample_declaration_out_of_court" target="_blank">Заявление о признании гражданина банкротом во внесудебном порядке
+          </a></li>
+          <li><a href="/creditors" target="_blank">Список кредиторов и должников гражданина</a></li>
+      </ul>
+      </div>
+      <div class="container__section">
+        <h2>Результаты анкет</h2><br>
+        <div class="container">
           <div class="wedo"> 
               {% for num, qa, res in session_data %}
               <button class="accordion__header">{{num}}. {{res}}</button>
