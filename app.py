@@ -299,7 +299,7 @@ def creditors():
     return send_from_directory('/home/user/bankruptcy/static/docs', 'creditors.docx', as_attachment=False)
 
 @app.route('/refs_out_of_court')
-def creditors():
+def refs_out_of_court():
     return send_from_directory('/home/user/bankruptcy/static/docs', 'refs_out_of_court.rtf', as_attachment=False)
 
 def html_for_court(answers):
