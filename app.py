@@ -200,7 +200,7 @@ def profile():
     res_array = []
     if num_of_sessions != ():
         for i in range(1, num_of_sessions[0][0] + 1):
-            if get_saved_answers_from_database(i)[0] != ():
+            if get_saved_answers_from_database(i)[0] != () and get_saved_answers_from_database(i)[1] != ():
                 saved.append(get_saved_answers_from_database(i)[0])
                 res_array.append(get_saved_answers_from_database(i)[1][0][0])
                 date_array.append(get_saved_answers_from_database(i)[2][0][0])
