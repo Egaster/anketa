@@ -39,8 +39,8 @@
       <h1>Результаты анкет</h1>
         <div class="container_for_answer">
           <div class="wedo"> 
-              {% for num, qa in session_data %}
-              <button class="accordion__header">Сессия {{num}}</button>
+              {% for num, qa, res in session_data %}
+              <button class="accordion__header">{{num}}. {{res}}</button>
               <div class="accordion__content">
                 {% for q in qa %}
                 <form class='form' method="POST">

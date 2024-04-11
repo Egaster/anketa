@@ -84,6 +84,7 @@ def form():
             res = results[int(session['history'][-2])]
         cursor = mysql.connection.cursor()
         #print(user_id)
+        save_answers_to_database(question_id, 'NULL')
         cursor.execute('SELECT session FROM sessions WHERE uid = %s', (user_id,))
         session_num = cursor.fetchone()
         print(session_num)
@@ -137,7 +138,7 @@ def get_saved_answers_from_database_form(session_num):
         cursor.execute('SELECT DISTINCT questions.question, text \
                        FROM questions JOIN result ON questions.qid = result.qid \
                        JOIN answers ON result.answer = answers.aid\
-                       WHERE result.uid = %s AND result.session = %s', (user_id, session_num, ))
+                       WHERE result.uid = %s AND result.qid > 0 AND result.session = %s', (user_id, session_num, ))
         saved_answers = cursor.fetchall()
         #if user_id == 0:
            # cursor.execute('DELETE FROM result WHERE uid = 0')
@@ -196,12 +197,14 @@ def profile():
     print(num_of_sessions)
     cursor.close() 
     date_array = []
+    res_array = []
     if num_of_sessions != ():
         for i in range(1, num_of_sessions[0][0] + 1):
             if get_saved_answers_from_database(i)[0] != ():
                 saved.append(get_saved_answers_from_database(i)[0])
-                date_array.append(get_saved_answers_from_database(i)[1][0][0][:-6])
-        return render_template('profile.html', session_data=(zip(date_array,saved)))  # Личный кабинет с прошлыми результатами анкеты  # Личный кабинет с прошлыми результатами анкеты
+                res_array.append(get_saved_answers_from_database(i)[1][0][0])
+                date_array.append(get_saved_answers_from_database(i)[2][0][0])
+        return render_template('profile.html', session_data=(zip(date_array,saved,res_array)))  # Личный кабинет с прошлыми результатами анкеты  # Личный кабинет с прошлыми результатами анкеты
     return render_template('profile.html')
 
 def get_saved_answers_from_database(session_num):
@@ -213,10 +216,14 @@ def get_saved_answers_from_database(session_num):
                        JOIN answers ON result.answer = answers.aid\
                        WHERE result.uid = %s AND result.session = %s', (user_id, session_num, ))
         saved_answers = cursor.fetchall()
+        cursor.execute('SELECT DISTINCT questions.question \
+                       FROM questions JOIN result ON questions.qid = result.qid \
+                       WHERE result.uid = %s AND result.qid < 0 AND result.session = %s', (user_id, session_num, ))
+        result = cursor.fetchall()
         cursor.execute('SELECT DISTINCT date FROM result WHERE uid = %s AND session = %s', (user_id, session_num, ))
         date = cursor.fetchall()
         cursor.close() 
-        return [saved_answers,date]
+        return [saved_answers,result,date]
     except Exception as e:
         app.logger.error(f"Failed to get saved answers from database: {e}")
         return []

@@ -8,8 +8,6 @@ CREATE TABLE IF NOT EXISTS `form` (
     PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
 
-select * from `form`;
-
 CREATE TABLE IF NOT EXISTS `result` (
     `id` int(11) NOT NULL AUTO_INCREMENT,
     `session` int(11) not null,
@@ -19,15 +17,17 @@ CREATE TABLE IF NOT EXISTS `result` (
     `date` VARCHAR(25),
     PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
--- drop table `form`;
+
 CREATE TABLE IF NOT EXISTS `questions` (
     `id` int(11) NOT NULL AUTO_INCREMENT,
     `qid` varchar(50) not null,
     `question` varchar(250) NOT NULL,
     PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
-
  insert into `questions` (`qid`, `question`) values
+ (-3, "Рекомендовано внесудебное банкротство"),
+ (-2, "Рекомендовано судебное банкротство"),
+ (-1, "Банкротство для Вас невозможно"),
  (1,  "Проходили ли Вы процедуру банкротства?"),
  (2, "Прошло уже более 5 лет с момента прохождения процедуры банкротства?"),
  (3, "Ваша общая сумма долговых обязательств менее 500 тысяч рублей?"),
@@ -59,13 +59,9 @@ CREATE TABLE IF NOT EXISTS `questions` (
  ('no', 'Нет'),
  ('end', 'Производство окончено в связи с отсутствием имущества'),
  ('again','	Производство окончено, но после этого возбуждено новое');
--- select * from `answers`;
--- drop table `result`;
--- select * from `questions`;
 
 CREATE TABLE IF NOT EXISTS `sessions` (
     `uid` varchar(50) NOT NULL primary key,
     `session` int(11)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
--- drop table `sessions`;
--- select  * from `sessions`;
+
