@@ -264,7 +264,7 @@ def sign_up():
         account = cursor.fetchone()
         if account:
             msg = 'Такой аккаунт уже существует'
-        elif not re.match(r'\w+\@\w+.\w{1,3}', username):
+        elif not re.match(r'\w+[\w\.\_\-]+\w+\@\w+[\w\.]+\w+.\w{1,3}', username):
             msg = 'Введите корректный адрес электронной почты!'
         elif not username or not hashed_password:
             msg = 'Поля должны быть заполнены!'
