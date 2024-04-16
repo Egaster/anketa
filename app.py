@@ -17,6 +17,7 @@ app.config['MYSQL_PASSWORD'] = ''
 app.config['MYSQL_DB'] = 'LOGIN'
 
 mysql = MySQL(app)
+prew_page = 'home'
 
 with open('questions.json', 'r', encoding='utf8') as f:
     data = json.load(f)
@@ -33,7 +34,7 @@ def form():
         session['history'] = []
     if 'answers' not in session:
         session['answers'] = {}
-
+    prew_page = 'form'
     if request.method == 'POST':
         if request.form.get('next'):
             next_id = int(request.form.get('next'))
@@ -159,6 +160,7 @@ def back():
 
 @app.route('/')
 def home():
+    prew_page = 'home'
     if 'history' in session:
         session['history'] = []
     if 'answers' in session:
@@ -168,22 +170,21 @@ def home():
 
 @app.route('/need')
 def need():
+    prew_page = 'need'
     return render_template('need.html')  # Главная
 
 
 @app.route('/judicial_bankruptcy')
 def judicial_bankruptcy_info():
+    prew_page = 'judicial_bankruptcy_info'
     return render_template('judicial_bankruptcy.html')  # Общая информация про судебное или внесудебное
 
 
 @app.route('/out-of-court_bankruptcy')
 def out_of_court_bankruptcy_info():
+    prew_page = 'out_of_court_bankruptcy_info'
     return render_template('out-of-court_bankruptcy.html')  # Общая информация про судебное или внесудебное
 
-
-@app.route('/full_info')
-def full_info():
-    return render_template('full_info.html')  # Полная инфа после заполнения анкеты и авторизации
 
 
 @app.route('/profile')
@@ -228,10 +229,6 @@ def get_saved_answers_from_database(session_num):
         app.logger.error(f"Failed to get saved answers from database: {e}")
         return []
 
-@app.route('/settings')
-def settings():
-    return render_template('settings.html')  # Настройки
-
 
 @app.route('/sign-in', methods=['GET', 'POST'])
 def sign_in():
@@ -246,7 +243,7 @@ def sign_in():
             session['loggedin'] = True
             session['id'] = account['id']
             session['username'] = account['username']
-            return redirect(url_for('home'))
+            return redirect(url_for(prew_page))
         else:
             msg = 'Неверный логин/пароль!'
     return render_template('sign_in.html', msg=msg)
@@ -273,7 +270,7 @@ def sign_up():
                            (username, hashed_password,))
             mysql.connection.commit()
             msg = 'Регистрация прошла успешно!'
-            return redirect(url_for('home'))
+            return redirect(url_for('sign_in'))
     elif request.method == 'POST':
         msg = 'Поля должны быть заполнены!'
     return render_template('sign_up.html', msg=msg)
