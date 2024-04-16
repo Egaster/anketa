@@ -1,22 +1,15 @@
-<!--Сообщаем браузеру как стоит обрабатывать эту страницу-->
 <!DOCTYPE html>
-<!--Оболочка документа с тэгом html, где указываем язык содержимого-->
 <html lang="ru">
-    <!--Заголовок страницы, контейнер для других важных данных(не отображается)-->
     <head>
-        <!--Заголовок страницы в браузере-->
         <title>Банкрот-эксперт</title>
-        <!--Кодировка страницы-->
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no, target-densityDpi=device-dpi" />
-        <!--Привязка css-->
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
         <link rel="stylesheet" href="../static/css/form.css">
         <link rel="stylesheet" href="../static/css/style.css">
         <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap" rel="stylesheet">
         <script src="https://kit.fontawesome.com/c3770d0828.js" crossorigin="anonymous"></script>
     </head>
-    <!--Отображаемое тело страницы-->
     <body>
         <header class="header__group">
             <div class="container">
@@ -58,7 +51,7 @@
                         <h1 class="question" id="question{{ question.id }}">
                             {{ question.text }}
                             {% if question.comment %}
-                                <img src="{{ url_for('static', filename='img/comment.png') }}" data-toggle="popover" data-content="{{ question.comment }}" alt="comment" style="width:20px;height:20px;">
+                                <img src="{{ url_for('static', filename='img/comment.png') }}" data-toggle="popover" data-content="{{ question.comment|safe }}" alt="comment" style="width:20px;height:20px;">
                             {% endif %}
                         </h1>     
                         {% if question.id != 9 %}     
