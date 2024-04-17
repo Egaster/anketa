@@ -331,10 +331,11 @@ def html_for_court(answers):
 
     html = head
     if '17' in answers and answers['17'] == 'yes':
+        html.replace(head, head_if_property)
         html+= if_insolvent
         if '19' not in answers or answers['19'] != 'no':
             html+=about_insolvency
-    if '18' in answers and answers['18'] == 'yes':
+    if '18' in answers and answers['18'] == 'no':
         html.replace(head, head_if_property)
     if '18' in answers and answers['18'] == 'no':
         html += if_no_property
