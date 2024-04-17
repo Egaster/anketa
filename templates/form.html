@@ -51,7 +51,7 @@
                         <h1 class="question" id="question{{ question.id }}">
                             {{ question.text }}
                             {% if question.comment %}
-                                <img src="{{ url_for('static', filename='img/comment.png') }}" data-toggle="popover" data-content="{{ question.comment|safe }}" alt="comment" style="width:20px;height:20px;">
+                                <img src="{{ url_for('static', filename='img/comment.png') }}" data-toggle="popover" data-html-content="{{ question.comment|safe }}" alt="comment" style="width:20px;height:20px;">
                             {% endif %}
                         </h1>     
                         {% if question.id != 9 %}     
@@ -143,6 +143,10 @@
     <script>
         $(document).ready(function(){
             $('[data-toggle="popover"]').popover({
+                html: true,
+                content: function() {
+                    return $(this).attr('data-html-content');
+                },
                 offset: '45, 0'
             }); 
             
