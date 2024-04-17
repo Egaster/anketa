@@ -43,7 +43,7 @@
                 </div>
                 <div class="card__group">
                     {% if question.id == 1 %}
-                    <p id="text">Банкротство - вынужденная мера! Если у Вас нет другого выхода, то после заполнения анкеты Вы сможете узнать, какое банкротство подойдет именно Вам.</p>
+                    <p id="text">Банкротство - вынужденная мера! Если у Вас нет другого выхода, то после заполнения анкеты Вы сможете узнать, какое банкротство подойдет именно Вам. Чтобы результат анкеты был сохранен, необходимо <a href="/sign-in" target="_blank">авторизироватся</a></p>
                     {% endif %}
                 </div><!--/.card-->
                 <form class='form' method="POST">
@@ -85,11 +85,11 @@
                             <h1 class="question" id="question{{ question.id }}">Банкротство вам не подходит. Почему?</h1>
                             <div class="card__group"><div> {{res.text|safe}}</div></div>
                         {% elif  question.id == -3 %}
-                            <h1 class="question" id="question{{ question.id }}">У Вас есть возможность пройти процедуру внесудебного банкротства.</h1>
+                            <h1 class="question" id="question{{ question.id }}">У Вас есть возможность пройти процедуру внесудебного банкротства</h1>
                             <div class="card__group"> <div>{{ res.text|safe }}</div></div>
                             <div class="card__group"> <div>Подробнее про процедуру внесудебного банкротства Вы можете узнать по <a href ="/out-of-court_bankruptcy" target="_blank"> ссылке</a>.</div></div>
                         {% elif  question.id == -2 %}
-                            <h1 class="question" id="question{{ question.id }}">У Вас есть возможность пройти процедуру судебного банкротства.</h1>
+                            <h1 class="question" id="question{{ question.id }}">У Вас есть возможность пройти процедуру судебного банкротства</h1>
                             <div class="card__group"> <div>{{ res|safe }}</div></div>
                             <div class="card__group"> <div>Подробнее про процедуру судебного банкротства Вы можете узнать по <a href ="/judicial_bankruptcy" target="_blank"> ссылке</a>.</div></div>
                         {% endif %}

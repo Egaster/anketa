@@ -74,7 +74,7 @@ def form():
                        WHERE uid = %s', (user_id,))
         mysql.connection.commit()
         cursor.close()
-    if question_id < 0:
+    elif question_id < 0:
         print(session['history'])
         user_id = session.get('id') 
         if user_id == None:
