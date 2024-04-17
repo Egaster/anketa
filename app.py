@@ -104,7 +104,7 @@ def form():
             answer_17 = False
         else:
              answer_17 = True
-        return render_template('form.html', question=question, res=res, saved=saved, answer_17=answer_17)
+        return render_template('form.html', question=question, res=res, saved=saved, answer_17=answer_17, answers=session['answers'])
     return render_template('form.html', question=question)
 
 
@@ -304,10 +304,10 @@ def refs_out_of_court():
 
 def html_for_court(answers):
     head = "<p>Основаниями для подачи заявления о признании банкротом в суд являются: наличие задолженности не менее 500 тысяч рублей, неплатежеспособность и (или) недостаточность имущества для выплаты долгов, а также неисполнение обязательств по выплате задолженностей в течение 3 месяцев с момента, когда они должны были  быть исполнены (таким моментом считают, например, дату платежа по кредиту, указанную в договоре).  (<a href='https://www.consultant.ru/document/cons_doc_LAW_39331/e3c4626012c2307fb67dad8ebe12c8b41573e713/' target='blank'>п. 2 ст. 213.3</a>, <a href='https://www.consultant.ru/document/cons_doc_LAW_39331/c2c8c81ee8e4bd843286b08b10607f00ec6ae073/' target='blank'>п. 2 ст. 213.4</a> ФЗ  «О банкротстве») <p>"
-    head_if_property = "Если Ваша задолженность составляет менее 500 тыс. руб. и Вы предвидите, что не сможете дальше выплачивать долги, то Вы вправе подать в суд для признания Вас банкротом (<a href='https://www.consultant.ru/document/cons_doc_LAW_39331/e3c4626012c2307fb67dad8ebe12c8b41573e713/' target='blank'>п. 2 ст. 213.3 ФЗ «О банкротстве»</a>)."
+    head_if_property = "<p>Если Ваша задолженность составляет менее 500 тыс. руб. и Вы предвидите, что не сможете дальше выплачивать долги, то Вы вправе подать в суд для признания Вас банкротом (<a href='https://www.consultant.ru/document/cons_doc_LAW_39331/e3c4626012c2307fb67dad8ebe12c8b41573e713/' target='blank'>п. 2 ст. 213.3 ФЗ «О банкротстве»</a>).</p>"
     if_insolvent = """<p>Так как Ваш долг превышает 500 тысяч рублей и Вы понимаете, что не сможете оплатить долги по всем обязательствам в срок, Вы обязаны открыть процедуру судебного банкротства.</p>
         """
-    about_insolvency = """<p><b>Неплатежеспособность</b> – невозможность оплатить все задолженности в полном объеме<p> 
+    about_insolvency = """<p><b>Неплатежеспособность</b> – невозможность оплатить все задолженности в полном объеме.<p> 
         <p>Она имеет место при соблюдении хотя бы одного из этих пунктов:</p>
         <ol class='with-parentheses'>
         <li>были прекращены расчеты с кредиторами, то есть Вы перестали исполнять денежные обязательства и (или)  уплачивать обязательные платежи, срок исполнения которых наступил;</li>
@@ -315,9 +315,9 @@ def html_for_court(answers):
         <li>размер Вашей задолженности превышает стоимость имущества, в том числе права требования;</li>
         <li>у Вас есть постановление об окончании исполнительного производства в связи с отсутствием имущества, на которое может быть обращено взыскание.</li>
         </ol>"""
-    if_no_property = "<p>При этом, важно учитывать следующий момент: если у Вас нет имущества, помимо, например, единственного жилья, то у Вас есть право подать в суд заявление о признании банкротом (<a href='https://www.consultant.ru/document/cons_doc_LAW_39331/c2c8c81ee8e4bd843286b08b10607f00ec6ae073/?ysclid=lumgijnp2z11735395' target='_blank'>ст. 213.4 ФЗ «О банкротстве»</a>).</p>"
-    if_no_reason = """<p><b>Могут возникнуть трудности с принятием судом Вашего заявления о признании банкротом</b></p>
-        <p><b>Неплатежеспособность</b> – невозможность оплатить все задолженности в полном объеме<p> 
+    if_no_property = "<p>Также право подачи заявления в суд о признании банкротом подтверждается недостаточностью вашего имущества (<a href='https://www.consultant.ru/document/cons_doc_LAW_39331/c2c8c81ee8e4bd843286b08b10607f00ec6ae073/?ysclid=lumgijnp2z11735395' target='_blank'>ст. 213.4 ФЗ «О банкротстве»</a>) – у Вас нет имущества, которое могло бы покрыть все долги.</p>"
+    if_no_reason = """<p><b>Однако могут возникнуть трудности с принятием судом Вашего заявления.</b></p>
+        <p><b>Неплатежеспособность</b> – невозможность оплатить все задолженности в полном объеме.<p> 
         <p>Она имеет место при соблюдении хотя бы одного из этих пунктов:</p>
         <ol class='with-parentheses'>
         <li>были прекращены расчеты с кредиторами, то есть Вы перестали исполнять денежные обязательства и (или)  уплачивать обязательные платежи, срок исполнения которых наступил;</li>
@@ -330,14 +330,15 @@ def html_for_court(answers):
     if_more_then_30_days = "<p>Так как с тех пор, как Вы узнали, что не сможете заплатить всем кредиторам, прошло уже более 30 дней, Вам придется выплатить штраф от 1000 до 3000 рублей (п. 5 <a href='https://www.consultant.ru/document/cons_doc_LAW_34661/cd9e7b3faed04ce5a1863ac280a28ee438df0280/?ysclid=lumge4m3yy484154578' target='_blank'>ст. 14.13 КоАП РФ</a>).</p>"
 
     html = head
-    if '17' in answers and answers['17'] == 'yes':
-        html.replace(head, head_if_property)
-        html+= if_insolvent
+    if '17' in answers and answers['17'] == 'yes':      
+        if '3' in answers and answers['3'] == 'yes':
+            html = html.replace(head, head_if_property) 
+        else:
+            html+= if_insolvent
         if '19' not in answers or answers['19'] != 'no':
             html+=about_insolvency
     if '18' in answers and answers['18'] == 'no':
-        html.replace(head, head_if_property)
-    if '18' in answers and answers['18'] == 'no':
+        html = html.replace(head, head_if_property)
         html += if_no_property
     if '19' in answers and answers['19'] == 'no':
         html += if_no_reason
