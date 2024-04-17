@@ -334,14 +334,15 @@ def html_for_court(answers):
         if '3' in answers and answers['3'] == 'yes':
             html = html.replace(head, head_if_property) 
         else:
-            html+= if_insolvent
+            html += if_insolvent
         if '19' not in answers or answers['19'] != 'no':
             html+=about_insolvency
     if '18' in answers and answers['18'] == 'no':
         if '3' in answers and answers['3'] == 'yes':
             html = html.replace(head, head_if_property)
-        else:
             html += if_no_property
+        else:
+            html += if_insolvent
     if '19' in answers and answers['19'] == 'no':
         html += if_no_reason
     if '19' in answers and answers['19'] == 'yes':
