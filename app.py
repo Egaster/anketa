@@ -300,7 +300,7 @@ def creditors():
 
 @app.route('/refs_out_of_court')
 def refs_out_of_court():
-    return send_from_directory('/home/user/bankruptcy/static/docs', 'refs_out_of_court.docx', as_attachment=False)
+    return send_from_directory('/home/user/bankruptcy/static/docs', 'refs_out_of_court.doc', as_attachment=False)
 
 def html_for_court(answers):
     head = "<p>Основаниями для подачи заявления о признании банкротом в суд являются: наличие задолженности не менее 500 тысяч рублей, неплатежеспособность и (или) недостаточность имущества для выплаты долгов, а также неисполнение обязательств по выплате задолженностей в течение 3 месяцев с момента, когда они должны были  быть исполнены (таким моментом считают, например, дату платежа по кредиту, указанную в договоре).  (<a href='https://www.consultant.ru/document/cons_doc_LAW_39331/e3c4626012c2307fb67dad8ebe12c8b41573e713/' target='blank'>п. 2 ст. 213.3</a>, <a href='https://www.consultant.ru/document/cons_doc_LAW_39331/c2c8c81ee8e4bd843286b08b10607f00ec6ae073/' target='blank'>п. 2 ст. 213.4</a> ФЗ  «О банкротстве») <p>"
