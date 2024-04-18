@@ -17,7 +17,7 @@ app.config['MYSQL_PASSWORD'] = ''
 app.config['MYSQL_DB'] = 'LOGIN'
 
 mysql = MySQL(app)
-prew_page = 'home'
+
 
 with open('questions.json', 'r', encoding='utf8') as f:
     data = json.load(f)
@@ -34,7 +34,7 @@ def form():
         session['history'] = []
     if 'answers' not in session:
         session['answers'] = {}
-    prew_page = 'form'
+    session['prev_page'] = 'form'
     if request.method == 'POST':
         if request.form.get('next'):
             next_id = int(request.form.get('next'))
@@ -163,7 +163,7 @@ def back():
 
 @app.route('/')
 def home():
-    prew_page = 'home'
+    session['prev_page'] = 'home'
     if 'history' in session:
         session['history'] = []
     if 'answers' in session:
@@ -173,20 +173,20 @@ def home():
 
 @app.route('/need')
 def need():
-    prew_page = 'need'
+    session['prev_page'] = 'need'
     return render_template('need.html')  # Главная
 
 
 @app.route('/judicial_bankruptcy')
 def judicial_bankruptcy_info():
-    prew_page = 'judicial_bankruptcy_info'
-    return render_template('judicial_bankruptcy.html')  # Общая информация про судебное или внесудебное
+    session['prev_page'] = 'judicial_bankruptcy_info'
+    return render_template('judicial_bankruptcy.html')  # Общая информация про судебное 
 
 
 @app.route('/out-of-court_bankruptcy')
 def out_of_court_bankruptcy_info():
-    prew_page = 'out_of_court_bankruptcy_info'
-    return render_template('out-of-court_bankruptcy.html')  # Общая информация про судебное или внесудебное
+    session['prev_page'] = 'out_of_court_bankruptcy_info'
+    return render_template('out-of-court_bankruptcy.html')  # Общая информация про  внесудебное
 
 
 
@@ -246,7 +246,7 @@ def sign_in():
             session['loggedin'] = True
             session['id'] = account['id']
             session['username'] = account['username']
-            return redirect(url_for(prew_page))
+            return redirect(url_for(session['prev_page']))
         else:
             msg = 'Неверный логин/пароль!'
     return render_template('sign_in.html', msg=msg)
@@ -282,7 +282,7 @@ def sign_up():
 @app.route('/logout', methods=['POST'])
 def logout():
     session.pop('loggedin', None)
-    return redirect(url_for(prew_page))
+    return redirect(url_for(session['prev_page']))
 
 
 @app.route('/sample_declaration_court')
