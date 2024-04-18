@@ -282,7 +282,7 @@ def sign_up():
 @app.route('/logout', methods=['POST'])
 def logout():
     session.pop('loggedin', None)
-    return redirect(url_for('home'))
+    return redirect(url_for(prew_page))
 
 
 @app.route('/sample_declaration_court')
